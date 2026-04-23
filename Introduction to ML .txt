@@ -1,6 +1,6 @@
 Welcome to the Machine Learning(ML) course!
 Get ready to dive into the exciting world of Machine Learning - where data meets intelligence, and possibilities are endless.
-
+![Description]("C:\Users\supri\Downloads\Telegram Desktop\4.jpg")
 image
 Prerequisites:
 Before you start, you should be comfortable with:
