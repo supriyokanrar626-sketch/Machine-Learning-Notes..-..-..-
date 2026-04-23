@@ -1,0 +1,34 @@
+Welcome to the Machine Learning(ML) course!
+Get ready to dive into the exciting world of Machine Learning - where data meets intelligence, and possibilities are endless.
+
+image
+Prerequisites:
+Before you start, you should be comfortable with:
+Python Programming, Pandas for data manipulation and NumPy for numerical operations
+
+How This Course Works
+
+Bite-sized lessons designed to be easy to follow at your own pace
+Real-world use cases to help you understand where and why ML matters
+Visual explanations and simplified concepts to make learning fun
+Mini-projects and code examples you can try, tweak, and apply
+Progressive learning flow - starting from basics and moving toward hands-on model building
+By the end of this course, you will:
+
+Understand what Machine Learning is and how it differs from AI and Deep Learning
+Learn how ML is used in real-world sectors like healthcare, finance, retail, and more
+Explore core ML tasks like classification, regression, clustering, and recommendation systems
+Build your first ML model from collecting data to making predictions
+Discover how to evaluate and improve your models for better accuracy
+Get hands-on with practical examples using simple, beginner-friendly tools
+Let’s make Machine Learning simple, exciting, and useful - together.
+
+
+Introduction to Machine Learning
+So what is Machine Learning (ML)? It is a part of Artificial Intelligence (AI) that builds systems which can learn from data and improve over time, without being explicitly programmed for every rule.
+ML uses past data to make predictions or decisions on new, unseen data.
+How It Works
+
+image
+
+Think of it like teaching a computer with examples. Instead of writing every rule, we give it past data, and it figures out the rules by itself.
