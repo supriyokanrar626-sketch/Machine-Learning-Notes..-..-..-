@@ -388,3 +388,106 @@ def main():
 if __name__ == "__main__":
     main()
 ##########################33333333#####################
+Mini Project - Clean and Explore Employee Dataset
+You are given a dataset called employee_practice.csv with the following columns:
+
+Name	Age	Department	Salary	Years_Experience	Promotion_Eligibility
+John	28	HR	50000	2	No
+Sophia	34	IT	80000	5	Yes
+Amit	25	Finance	60000	3	No
+Emma	40	HR	90000	6	Yes
+Liam	30	IT	75000	4	No
+Task
+
+1. Load the dataset
+
+Load employee_practice.csv using pandas.
+2. Identify Features & Label
+
+Features: All columns except Promotion_Eligibility
+Label: Promotion_Eligibility
+Print both features and label.
+3. Handle Missing Values
+
+For numerical columns (Age, Years_Experience, Salary): fill missing values with median.
+For categorical columns (Department, Promotion_Eligibility): fill missing values with mode.
+Print missing values before and after handling.
+4. Detect & Handle Outliers
+
+Salary: cap values < 30000 → 30000, values > 150000 → 150000
+Years_Experience: cap > 30 → 30
+Print outliers before handling.
+5. Visualize Salary
+
+Use a boxplot to show Salary distribution after handling outliers.
+
+### HERE IS THE CODE  ######
+
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+
+# -----------------------------
+# Step 1: Load Dataset
+# -----------------------------
+df = pd.read_csv("employee_practice.csv")  # <-- Fill: load CSV file 
+print("First 5 rows:\n", df.head())
+
+# -----------------------------
+# Step 2: Identify Features & Label and Print features columns and label name
+# -----------------------------
+features = df.drop("Promotion_Eligibility", axis=1)  
+label = df["Promotion_Eligibility"]  
+
+print("\nFeatures:\n", features.columns)  # <-- Fill: print feature columns 
+print("Label:\n", label.name)   # <-- Fill: print label name 
+
+# -----------------------------
+# Step 3: Handle Missing Values
+# -----------------------------
+print("\nMissing Values Before:\n", df.isnull().sum())  # <-- Fill: check missing values 
+
+# Fill numerical missing values with median
+df["Age"] = df["Age"].fillna(df["Age"].median())  # <-- Fill: handle missing Age 
+df["Years_Experience"] = df["Years_Experience"].fillna(df["Years_Experience"].median())  # <-- Fill: handle missing Years_Experience 
+
+# Fill categorical missing values with mode
+df["Department"] = df["Department"].fillna(df["Department"].mode()[0])  # <-- Fill: handle missing Department 
+df["Promotion_Eligibility"] = df["Promotion_Eligibility"].fillna(df["Promotion_Eligibility"].mode()[0])  # <-- Fill: handle missing Promotion_Eligibility 
+
+print("\nMissing Values After:\n", df.isnull().sum())
+
+# -----------------------------
+# Step 4: Detect & Handle Outliers (Simple Method)
+# -----------------------------
+# Identify Salary outliers (e.g., Salary < 30000 or Salary > 150000)
+salary_outliers = df[(df["Salary"] < 30000) | (df["Salary"] > 150000)]  # <-- Fill: set low and high threshold values
+print("\nSalary Outliers:\n", salary_outliers)
+
+# Remove Salary outliers 
+df = df[(df["Salary"] >= 30000) & (df["Salary"] <= 150000)]
+
+# Handle Years_Experience outliers (remove > 30 years)
+df = df[df["Years_Experience"] <= 30]
+
+
+# -----------------------------
+# Step 5: Handling Outliers
+# -----------------------------
+print("\nDescriptive Statistics:\n", df.describe())  # <-- Fill: get descriptive stats 
+print("\nEmployees per Department:\n", df["Department"].value_counts())  # <-- Fill: count employees 
+
+plt.figure(figsize=(6,4))
+plt.boxplot(df["Salary"])  # <-- Fill: column to visualize "Salary"
+plt.title("Salary Distribution After Handling Outliers")
+plt.ylabel("Salary")   # <-- Fill: y-axis label ("Salary")
+plt.savefig("salary_boxplot.png")  # Save the image
+plt.show()
+
+def main():
+    analyze_data("employee_practice.csv")
+
+if __name__ == "__main__":
+    main()
+
+#####################################
