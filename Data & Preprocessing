@@ -336,3 +336,55 @@ def main():
 if __name__ == "__main__":
     main()
 ###################################
+Dealing with Outliers - Practice Problem 2
+We are given a dataset called employee_salaries.csv.
+This dataset contains information about employees and their salaries.
+
+Sometimes, datasets contain outliers, which are unusual values compared to the rest of the data.
+For example, if most employees earn between 30,000 and 100,000 but one record shows 10,000 or 200,000, those are clear outliers.
+
+Task
+
+Load the dataset using Pandas.
+Display the first 5 rows of the dataset to understand its structure.
+Visualize the Salary column using a boxplot to identify outliers.
+Remove outliers by keeping only employees who have salaries between 30,000 and 100,000.
+Display the cleaned dataset without outliers.
+Return the cleaned DataFrame.
+
+### HERE IS THE SOLUTION ####
+
+import pandas as pd   # TODO: Import pandas library
+import matplotlib.pyplot as plt
+
+def analyze_salaries(filePath):   # TODO: Add function parameter (file path)
+
+    # Step 1: Load csv file
+    df = pd.read_csv("employee_salaries.csv")   # TODO: Load the CSV file using pandas
+    print("\nFirst 5 rows of the dataset:\n")
+    print(df.head())   # TODO: Print the first 5 rows
+
+    # Step 2: Visualize with outliers
+    plt.boxplot(df["Salary"])   
+    plt.title("Salary Distribution (with Outliers)")
+    plt.savefig("salary_outliers.png")   
+    plt.close()
+    print("\nBoxplot saved as 'salary_outliers.png'")
+
+    # Step 3: Remove outliers (keep only 30000–100000)
+    # TODO: Filter dataset to keep only rows where Salary is between 30000 and 100000
+    cleaned_df = df[(df["Salary"] >= 30000) & (df["Salary"] <= 100000)]   
+    print("\nDataset after removing outliers:\n")
+    print(cleaned_df)
+    print(cleaned_df.shape)
+    # TODO return the cleaned DataFrame
+    return cleaned_df
+
+
+def main():
+    # TODO: Call the function with the dataset path
+    analyze_salaries("employee_salaries.csv")   
+
+if __name__ == "__main__":
+    main()
+##########################33333333#####################
