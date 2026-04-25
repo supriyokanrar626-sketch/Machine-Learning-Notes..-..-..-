@@ -107,7 +107,14 @@ Satellite photos for weather prediction
 Product photos on an e-commerce site
 Security camera footage
 ###########################################
+MCQ 1 : 
 A health-tracking app records the number of steps a user takes in a day. 
 Sometimes a person may walk 5,000 steps, other times 12,300 steps. The values are always whole counts.
 
 Answer = Numeric ( Discreate ) because the number of steps is a numerical discrete variable, it consists of whole counts.
+#####################3
+MCQ 2 : 
+A university collects data about students’ blood groups for medical records. 
+Possible values are {A, B, AB, O}. There is no ranking or priority among these categories.
+
+Answer = Categorical (unordered ) because blood groups are categorical (unordered), they are distinct categories with no inherent ranking.
