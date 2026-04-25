@@ -118,3 +118,9 @@ A university collects data about students’ blood groups for medical records.
 Possible values are {A, B, AB, O}. There is no ranking or priority among these categories.
 
 Answer = Categorical (unordered ) because blood groups are categorical (unordered), they are distinct categories with no inherent ranking.
+##############################
+MCQ 3 :
+Researchers collect thousands of tweets about a new smartphone launch. 
+Each tweet is a short text message, often with slang, hashtags, or emojis.
+
+Answer = Text ... because tweets are text data, consisting of words, symbols, and emojis.
