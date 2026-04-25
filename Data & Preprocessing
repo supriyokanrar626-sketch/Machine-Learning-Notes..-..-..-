@@ -76,7 +76,9 @@ Data represented as numbers.
 
 Age = 25 → Discrete
 Salary = $55,000 → Discrete
-Clarification: You might think salary could be continuous, but in practice, it's paid in specific currency units (e.g., dollars and cents). Since there are finite, countable steps between values (you can't be paid $55,000.12345), we treat it as discrete.
+Clarification: You might think salary could be continuous, but in practice, 
+it's paid in specific currency units (e.g., dollars and cents). 
+Since there are finite, countable steps between values (you can't be paid $55,000.12345), we treat it as discrete.
 Weight = 72.8 kg → Continuous
 
 2. Categorical Data (Qualitative)
@@ -96,11 +98,16 @@ Tweets, comments, articles.
 
 4. Image Data  ###########
 
-Data in the form of pictures or visuals. To a computer, an image is a grid of pixels, where each pixel has a numerical value representing its color and intensity.
+Data in the form of pictures or visuals. To a computer, an image is a grid of pixels,
+where each pixel has a numerical value representing its color and intensity.
 
 Handwritten digit images
 Medical scans (X-rays, MRIs)
 Satellite photos for weather prediction
 Product photos on an e-commerce site
 Security camera footage
+###########################################
+A health-tracking app records the number of steps a user takes in a day. 
+Sometimes a person may walk 5,000 steps, other times 12,300 steps. The values are always whole counts.
 
+Answer = Numeric ( Discreate ) because the number of steps is a numerical discrete variable, it consists of whole counts.
