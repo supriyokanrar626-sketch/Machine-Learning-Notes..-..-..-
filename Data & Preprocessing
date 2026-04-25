@@ -287,3 +287,52 @@ Outliers are values that don’t fit in with the rest. You can see them, think a
 Start with visuals and small datasets before learning formulas.
 
 ################################33
+Dealing with Outliers - Practice Problem
+We are given a dataset called working_hours.csv.
+This dataset contains information about employees and how many hours they work per week.
+Sometimes, datasets contain outliers, unusual values that don’t make sense compared to the rest of the data.
+For example, if most employees work between 30–60 hours per week, but one record shows 20 hours or 100 hours, those are clear outliers.
+Task
+
+Load the dataset using Pandas.
+Display the first 5 rows of the dataset to understand its structure.
+Visualize the Hours_Worked column using a boxplot to identify outliers.
+Remove outliers by keeping only employees who worked between 30 and 60 hours per week.
+Display the cleaned dataset without outliers.
+
+##### HERE IS CODE ####
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+import matplotlib.pyplot as plt
+
+def analyze_data(filePath):
+
+    # Step 1: Load csv file
+    df = pd.read_csv(filePath)
+    print("\nFirst 5 rows of the dataset:\n")
+    print( df.head() )   # ← Fill in
+
+    # Step 2: Visualize with outliers
+    plt.boxplot(df["Hours_Worked"])  
+    plt.title("Working Hours Distribution (with Outliers)")
+    plt.savefig("hours_outliers.png")
+    plt.close()
+    print("\nBoxplot saved as 'hours_outliers.png'")
+
+    # Step 3: Remove outliers (keep only 30–60)
+    cleaned_df = df[( df["Hours_Worked"] >= 30) & ( df["Hours_Worked"] <= 60 )]   # ← Fill in
+    print(df.shape)
+    print(cleaned_df)
+    print("\nDataset after removing outliers:\n")
+    
+    print( cleaned_df.shape )   # ← Fill in
+
+    # return cleaned_df
+
+def main():
+    analyze_data("working_hours.csv")
+
+if __name__ == "__main__":
+    main()
+###################################
