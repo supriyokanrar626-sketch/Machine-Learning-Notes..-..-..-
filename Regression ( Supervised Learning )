@@ -322,3 +322,46 @@ Polynomial regression lets the machine draw a curve that matches the real-world 
 The model can then predict values even outside the obvious data points.
 
 ############  HERE IS THE CODE ##########
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+
+# Step 1: Input data
+speed = [[20], [40], [60], [80], [100]]     # Features
+mileage = [8, 15, 22, 20, 15]               # Labels
+
+# Step 2: Transform into polynomial features
+poly = PolynomialFeatures(degree=3)
+speed_poly = poly.fit_transform(speed)
+
+# Step 3: Create the model
+model = LinearRegression()
+
+# Step 4: Train the model
+model.fit(speed_poly, mileage)
+
+# Step 5: Make prediction for 120 km/h
+predicted_mileage = model.predict(poly.transform([[120]]))
+print("Predicted mileage at 120 km/h: ",predicted_mileage)  # What do you think it will print?
+################################
+MCQ - 1
+In Linear Regression, which statement about Mean Squared Error (MSE) is correct?
+
+Answer = Smaller MSE -> Better model predictions  ... because a smaller MSE indicates the model’s 
+predictions are closer to the actual values, meaning better performance.
+
+########################
+MCQ - 2
+A teacher notices that studying very few or very many hours leads to lower exam scores, 
+while medium study hours give higher scores. Which model is most suitable?
+
+Answer = Polynomial Regression ... because the relationship is non-linear (medium hours → higher scores), 
+so polynomial regression can capture the curve.
+
+#########################3
+MCQ - 3
+An automobile company predicts mileage (mpg) from engine size. What kind of relationship does Linear Regression model here?
+
+Answer = Linear relationship (positive or negative)...
+ because linear regression models a linear relationship, which can be positive or negative depending on the data.
+#####################
