@@ -128,3 +128,47 @@ Key Takeaway: Linear regression is just a way for a machine to learn patterns fr
 just like we did with our line, but automatically!
 
 ##################################################33
+Linear Regression - Practice Problem 2
+We have a new dataset of employees’ study hours and their exam scores. Your goal is to predict the score for an employee who studies a certain number of hours.
+
+EmployeeID	Name	Hours_Studied	Exam_Score
+1	John	1	45
+2	Sarah	2	50
+3	Amit	3	60
+4	Emma	4	65
+5	Liam	5	?
+Task
+
+Load the dataset employee_study.csv using pandas.
+Select the feature Hours_Studied and the label Exam_Score.
+Create a Linear Regression model using sklearn.linear_model.LinearRegression.
+Train the model on the dataset.
+Predict the exam score for an employee who studies 6 hours.
+Print the predicted score.
+
+#### HERE IS CODE ##############
+import pandas as pd
+
+#TODO import the Linear Regression model
+from sklearn.linear_model import LinearRegression
+
+# Step 1: Load dataset
+df = pd.read_csv("employee_study.csv")   # TODO: Fill in the CSV filename
+
+# Step 2: Select feature and label
+X = df[["Hours_Studied"]]              # TODO: Fill in feature column
+y = df["Exam_Score"]                # TODO: Fill in label column
+
+# Step 3: Create the model
+# TODO: Initialize LinearRegression model
+model = LinearRegression()
+
+# Step 4: Train the model
+# TODO: Train the model using fit()
+model.fit(X,y)
+
+# Step 5: Make prediction
+predicted_score = model.predict([[6]])   # Predict score for 6 hours
+print(predicted_score)
+
+#############################
