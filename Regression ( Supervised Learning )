@@ -27,3 +27,42 @@ Key Takeaway
 You’ve just done linear regression in your head!
 Machine learning will teach computers to do this automatically for much bigger datasets.
 For now, focus on understanding the pattern visually.
+#############################
+Finding the Best Line 
+Study_Hours	Exam_Score	Coordinates (x, y)
+   1	           40	        (1, 40)
+   2           	 50	        (2, 50)
+   3             65	        (3, 65)
+   4	           70	        (4, 70)
+Notice: the points are not perfectly in a straight line.
+Step 1: Draw a Rough Line
+
+Plot each point using its coordinates (Study Hours, Exam Score).
+Draw a rough prediction line that passes near most points. For this example, it roughly passes through (1, 42) and (4, 68):
+image
+This is your best-fit line conceptually — it doesn’t have to pass through all points.
+Step 2: Calculate Errors (Conceptually)
+
+Error for each point: vertical distance from point to the line.
+- Point (1,40): slightly below line → small negative error
+- Point (2,50): slightly below line → small negative error
+- Point (3,65): slightly above line → small positive error
+- Point (4,70): slightly above line → small positive error
+We square the errors when calculating total error so that positive and negative errors don’t cancel each other out, and larger mistakes are penalized more.
+Total squared error is the sum of all individual squared distances.
+Step 3: Adjust the Line
+
+Move the line slightly up or down to reduce total errors.
+Repeat until the line is as close as possible to all points.
+Final best-fit line (approximate): passes near (1,42) and (4,68).
+Step 4: Make Predictions
+
+New student studies 3.5 hours → follow the line → predicted score ≈ 66
+Key Takeaway
+
+The best line minimizes errors across all points.
+It doesn’t pass exactly through every point but balances errors.
+Each point (x, y) represents an actual measurement.
+Squaring the errors ensures that all deviations contribute positively, and larger mistakes matter more.
+Once the line is found, you can predict any new value.
+#########################
