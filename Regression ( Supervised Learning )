@@ -295,4 +295,30 @@ model.fit(experience_poly, salary)
 # Step 4: Make a prediction (e.g., 6 years of experience)
 predicted_salary = model.predict(poly.transform([[6]]))
 print(predicted_salary)   # Output: [~85]
+
 ################################################
+Polynomial Regression - Practice Problem
+We’re studying how a car’s speed affects its fuel efficiency (mileage in km/l).
+Notice how mileage increases at first but then starts to drop at higher speeds (because the engine works harder). This creates a curved pattern — perfect for polynomial regression!
+Speed (km/h)	Mileage (km/l)
+20	8
+40	15
+60	22
+80	20
+100	15
+120	?
+What You Should Do
+
+Look at the table — a straight line won’t fit well here.
+Use polynomial regression (degree=2 or 3) to capture the curve.
+Predict the mileage at 120 km/h.
+Expected Output After Completing the Code
+
+Predicted mileage at 120 km/h: [5.2]
+Key Learning
+
+When data rises then falls, straight lines fail.
+Polynomial regression lets the machine draw a curve that matches the real-world trend.
+The model can then predict values even outside the obvious data points.
+
+############  HERE IS THE CODE ##########
