@@ -66,3 +66,41 @@ Each point (x, y) represents an actual measurement.
 Squaring the errors ensures that all deviations contribute positively, and larger mistakes matter more.
 Once the line is found, you can predict any new value.
 #########################
+Linear Regression - Practice Problem
+We have a new dataset of students’ study hours and their exam scores. Your goal is to predict the score for a student who studies a certain number of hours.
+
+Study Hours	Exam Score
+1	42
+2	48
+3	60
+4	68
+5	?
+What You Should Do
+
+Use the previous steps we learned:
+Plot the points (optional).
+Draw a rough best-fit line OR
+Imagine the computer learning the line automatically.
+Predict the exam score for a student who studies 5 hours.
+
+####################  HERE IS SOLUTION ########
+
+from sklearn.linear_model import LinearRegression
+
+# Step 1: Input data
+hours = [[1], [2], [3], [4]]          # Features
+scores = [42, 48, 60, 68]             # Labels
+
+# Step 2: Create the model
+# TODO: complete this line
+model = LinearRegression()
+
+# Step 3: Train the model
+# TODO: complete this line
+# model.fit(...)
+model.fit(hours,scores)
+
+# Step 4: Make prediction
+predicted_score = model.predict([[5]])
+print(predicted_score)  # What do you think it will print?
+#########################################
