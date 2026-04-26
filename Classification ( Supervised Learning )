@@ -68,3 +68,68 @@ Logistic Regression → predicts categories (usually Yes/No).
 So even though it has "regression" in the name, it’s actually a classification algorithm.
 
 #################################
+
+Logistic Regression - Worked Example
+Let’s use Logistic Regression to predict if a student will Pass (1) or Fail (0) based on study hours.
+
+Step 1: Dataset
+
+Study Hours    	Pass (1) / Fail (0)
+1	                      0
+2                      	0
+3                      	1
+4	                      1
+5	                      1
+
+Students with fewer study hours (1–2) tend to Fail (0).
+Students with more study hours (3–5) tend to Pass (1).
+
+Step 2: Train a Logistic Regression Model
+
+We feed the dataset into Logistic Regression. The model learns the relationship between study hours and the outcome (Pass/Fail).
+
+Step 3: Predictions
+
+When we ask the model to predict:
+
+For 1 hour, the model says: about 85% chance of Fail → predicts Fail (0)
+For 3 hours, the model says: about 60% chance of Pass → predicts Pass (1)
+For 5 hours, the model says: about 90% chance of Pass → predicts Pass (1)
+
+Step 4: Key Observations
+
+Logistic Regression gives probabilities, not just a hard Yes/No.
+Then we apply a threshold (usually 0.5):
+If probability ≥ 0.5 → predict Pass (1)
+If probability < 0.5 → predict Fail (0)
+
+More study hours = higher probability of passing.
+
+################################
+
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Dataset
+data = {
+    "Study_Hours": [1, 2, 3, 4, 5],
+    "Pass": [0, 0, 1, 1, 1]
+}
+df = pd.DataFrame(data)
+
+X = df[["Study_Hours"]]   # Feature
+y = df["Pass"]            # Label
+
+# Train Logistic Regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Predictions on the same dataset that we took
+predictions = model.predict(X)
+print("Predictions:", predictions)
+
+# Probabilities
+probabilities = model.predict_proba(X)
+print("Probabilities:\n", probabilities)
+
+###########################
