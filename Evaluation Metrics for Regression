@@ -198,4 +198,46 @@ rmse = math.sqrt(mse)  # <-- Calculate RMSE
 
 print("Mean Squared Error (MSE):", round(mse, 2))
 print("Mean Squared Error (RMSE):", round(rmse, 2))
+
 ############################
+
+R Square Score (Coefficient of Determination)
+When we build a regression model, we want to know how well it explains the data. This is where R² (R-squared) comes in.
+
+What is R²?
+
+R² tells us how much better our model is compared to just guessing the average.
+It measures the proportion of the variation in the target (label) that the model can explain.
+Intuition
+
+Imagine we want to predict Exam Score from Study Hours:
+
+A bad model → always predicts the average exam score (say 62).
+A good model → predicts close to the actual scores.
+R² compares your model to the “average guess” baseline.
+
+R² = 1 - (Model Error/Average Guess Error)
+
+​
+ 
+If the model’s error is much smaller than the average guess’s error, R² will be close to 1.
+If the model is no better than the average guess, R² will be 0.
+If the model is worse than guessing, R² can be negative.
+Example
+
+Suppose actual exam scores are:
+
+Actual	Model Prediction	Error
+50	  52	              2
+60  	  65	              5
+70	  68	              2
+80	  78	              2
+Model Error (MSE) = average of squared errors = small
+Baseline Error (MSE of always predicting the mean) = larger
+So,
+
+R² = 1 - (small error/large error) ≈ 0.9
+
+That means the model explains 90% of the variation in exam scores.
+
+########################3
