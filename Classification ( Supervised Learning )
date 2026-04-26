@@ -1,1 +1,20 @@
 
+Classification - Intro  ..............
+
+So far, we studied Regression, where the goal was to predict numbers (continuous values).
+Example: Predicting a student's exam score from their study hours.
+Now let’s move to Classification, where the goal is to predict categories (labels), not numbers.
+
+Classification vs Regression
+
+Regression → Output is a number
+(e.g., price of a house, exam score, temperature).
+Classification → Output is a category (label)
+(e.g., spam vs. not spam, pass vs. fail, cat vs. dog).
+
+Intuition
+
+Think of classification as the task of drawing boundaries between different groups.
+
+In regression, we drew a line/curve to fit numbers.
+In classification, we draw a boundary (line/curve) to separate categories.
