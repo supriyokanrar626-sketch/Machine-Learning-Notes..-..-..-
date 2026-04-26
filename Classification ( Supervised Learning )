@@ -34,3 +34,37 @@ Question: Which projects are Classification?
 Ans = Project A only... because Project A predicts discrete categories (Fraud / Not Fraud), which is classification.
 
 ######################
+
+Logistic Regression - Intro ......
+
+So far, we used Regression to predict numbers (like exam scores or house prices).
+But what if the question is Yes/No instead of a number?
+
+Example Intuition
+Imagine we want to predict if a student will Pass (1) or Fail (0) based on study hours.
+
+## If we use Linear Regression, we might get predictions like:
+2 hours → 0.3
+3 hours → 0.7
+5 hours → 1.2
+But values like 1.2 or negative numbers don’t make sense as probabilities.
+
+## Logistic Regression fixes this by turning those values into a probability between 0 and 1.
+2 hours → 0.3 (30% chance of passing)
+3 hours → 0.7 (70% chance of passing)
+5 hours → 0.95 (95% chance of passing)
+
+## Finally, we set a simple threshold (commonly 0.5):
+If probability ≥ 0.5 → predict Pass (1)
+If probability < 0.5 → predict Fail (0)
+
+image
+This way, Logistic Regression gives both a probability and a Yes/No decision.
+
+Important Note Don’t get confused by the name!
+
+Linear Regression → predicts numbers (continuous values).
+Logistic Regression → predicts categories (usually Yes/No).
+So even though it has "regression" in the name, it’s actually a classification algorithm.
+
+#################################
