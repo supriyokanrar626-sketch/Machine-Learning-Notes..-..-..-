@@ -1,0 +1,24 @@
+Model Evaluation for Regression
+So far, we have learned how to fit models like Linear Regression and Polynomial Regression. But an important question remains:
+
+How do we know if our model is “good”?
+
+Imagine you built two different models for predicting house prices:
+
+Model A gives predictions close to actual prices.
+Model B’s predictions are all over the place. Without a way to measure errors, we can’t say which model is better.
+Why Evaluate a Model?
+
+To check how close predictions are to the real values.
+To compare different models (e.g., linear vs polynomial).
+To decide if our model needs improvement.
+Error
+=
+Actual Value
+−
+Predicted Value
+Error=Actual Value−Predicted Value
+If we collect all errors, we can calculate metrics that summarize model performance.
+
+#############################
+
