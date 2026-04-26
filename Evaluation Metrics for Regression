@@ -106,4 +106,42 @@ print("MAE:", mae)
 
 ##########################################
 
+Mean Squared Error (MSE)
+Now that we’ve seen MAE, let’s move to another common evaluation metric: Mean Squared Error (MSE).
+MSE measures how far predictions are from actual values.
+Instead of just taking absolute errors, it squares the errors first and then takes the average.
 
+MSE = 1/n * ∑ n i=1 (Yi - Yi^)^2
+
+Why Square the Errors?
+
+No Negative Canceling → Squaring ensures errors don’t cancel out.
+Penalizes Large Mistakes → Bigger errors grow much more after squaring.
+Example:
+
+Error = 2 → 2^2 = 4
+Error = 5 → 5^2 = 25 (much bigger impact!)
+
+Intuition
+
+MAE → “On average, how much am I off?”
+MSE → “On average, how big are my squared mistakes?”
+If you want to heavily punish large mistakes, MSE is better.
+Example (Conceptual)
+
+Suppose we predict exam scores:
+
+Student	Actual (y)	Predicted (ŷ)	Error (y-ŷ)	Squared Error
+A	50	48	-2	4
+B	60	65	-5	25
+C	70	68	+2	4
+D	80	75	-5	25
+
+MSE = (4+25+4+25)/4 = 14.5 
+The Mean Squared Error = 14.5
+
+The number itself doesn’t use the same units (it’s in squared units).
+If scores are in marks → MSE is in marks².
+That’s why sometimes people prefer RMSE (Root Mean Squared Error) to bring it back to the same unit.
+
+########################
