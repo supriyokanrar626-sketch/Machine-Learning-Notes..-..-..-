@@ -18,3 +18,19 @@ Think of classification as the task of drawing boundaries between different grou
 
 In regression, we drew a line/curve to fit numbers.
 In classification, we draw a boundary (line/curve) to separate categories.
+
+######################
+
+MCQ 1 :
+
+Scenario:
+You are working as a data scientist on the following:
+
+Project A: Predicting whether a transaction is Fraud or Not Fraud.
+Project B: Predicting the amount of rainfall tomorrow (in mm).
+Project C: Predicting the weight of a newborn baby (in kg).
+Question: Which projects are Classification?
+
+Ans = Project A only... because Project A predicts discrete categories (Fraud / Not Fraud), which is classification.
+
+######################
