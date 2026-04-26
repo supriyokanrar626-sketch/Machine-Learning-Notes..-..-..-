@@ -67,8 +67,43 @@ print("MAE:", mae)
 
 ####################################
 
+Mean Absolute Error (MAE) - Practice Problem
+We’re testing how well our prediction model works.
+To do this, we compare the actual values (true outcomes) with the predicted values (model’s output).
 
+The Mean Absolute Error (MAE) tells us, on average, how far our predictions are from the actual results.
 
+Smaller MAE = better predictions
+Larger MAE = less accurate model
+Example Dataset
 
+Actual (y_true)	Predicted (y_pred)
+30	28
+45	50
+50	47
+65	60
+80	85
+Task
+
+Use mean_absolute_error from scikit-learn.
+Pass y_true and y_pred to it.
+Print the MAE value.
+Expected Output
+
+MAE: 4.0
+
+#########  HERE IS THE CODE  ########
+
+from sklearn.metrics import mean_absolute_error
+
+# Actual vs Predicted values
+y_true = [30, 45, 50, 65, 80]
+y_pred = [28, 50, 47, 60, 85]
+
+# Calculate MAE
+mae = mean_absolute_error(y_true , y_pred)
+print("MAE:", mae)
+
+##########################################
 
 
