@@ -400,3 +400,179 @@ The model predicts perfectly for training data but poorly for new data. What is 
 ANS = Overfitting .. because the model fits the training data perfectly but fails on new data, a classic case  of overfitting.
 
 ##########3
+
+Overfitting and Underfitting - Worked Example
+Let’s continue with our Study Hours vs Exam Score dataset:
+
+Study Hours 	Exam Score
+1	               40
+2	                50
+3	               65
+4	               70
+5	                85
+6	                90
+7	                95
+
+Step 1: Try a Simple Model (Linear Regression)
+
+A straight line cannot capture the upward curve.
+This is called Underfitting, the model is too simple.
+Step 2: Try a Polynomial Model (Quadratic)
+
+A 2nd-degree curve (parabola-like) captures the trend quite well.
+This is a Good Fit, the model balances complexity and accuracy.
+Step 3: Try a Very Complex Model (6th Degree Polynomial)
+
+The curve passes exactly through all points but wiggles unnecessarily.
+This is Overfitting, the model is too complex, learning noise rather than the real trend.
+
+Expected Output :
+
+##########   CODE ##########
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Dataset
+X = np.array([1, 2, 3, 4, 5, 6, 7]).reshape(-1, 1)
+y = np.array([40, 50, 65, 70, 85, 90, 95])
+
+# Create test points for smooth curve plotting
+X_test = np.linspace(0, 8, 100).reshape(-1, 1)
+
+def plot_model(degree, title, subplot):
+    poly = PolynomialFeatures(degree=degree)
+    X_poly = poly.fit_transform(X)
+    model = LinearRegression()
+    model.fit(X_poly, y)
+
+    # Predictions
+    X_test_poly = poly.transform(X_test)
+    y_pred = model.predict(X_test_poly)
+
+    # Plot
+    plt.subplot(1, 3, subplot)
+    plt.scatter(X, y, color="red", label="Data Points")
+    plt.plot(X_test, y_pred, color="blue", label=f"Degree {degree} Fit")
+    plt.title(title)
+    plt.xlabel("Study Hours")
+    plt.ylabel("Exam Score")
+    plt.legend()
+
+plt.figure(figsize=(15, 4))
+
+# Underfitting: Degree 1 (Linear)
+plot_model(degree=1, title="Underfitting (Linear)", subplot=1)
+
+# Good Fit: Degree 2 (Quadratic)
+plot_model(degree=2, title="Good Fit (Quadratic)", subplot=2)
+
+# Overfitting: Degree 6 (High Polynomial)
+plot_model(degree=6, title="Overfitting (6th Degree)", subplot=3)
+
+plt.tight_layout()
+plt.savefig("fitting_examples.png", dpi=300)  # Save as high-quality PNG
+plt.close()  # Close the figure to free memory
+
+#######################
+
+Overfitting and Underfitting - Practice Problem
+We’re testing how well a polynomial regression model can fit a dataset.
+To do this, we compare the actual values (true outcomes) with the predicted values (model’s output).
+
+Example Dataset
+
+Study Hours (X)	Exam Score (y)
+2	30
+4	45
+6	55
+8	65
+10	70
+12	80
+14	85
+
+Task:
+Use PolynomialFeatures from sklearn.preprocessing to transform the input data into polynomial features.
+Train a LinearRegression model on the transformed features.
+Make predictions for test points using the trained model.
+Observe how the model’s predictions change with polynomial degree and how underfitting and overfitting appear visually.
+
+#########  CODE IS ############
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Step 0: New dataset
+X = np.array([2, 4, 6, 8, 10, 12, 14]).reshape(-1, 1)  # Hours studied
+y = np.array([30, 45, 55, 65, 70, 80, 85])             # Exam scores
+
+# Create test points for smooth curve plotting
+X_test = np.linspace(0, 15, 100).reshape(-1, 1)
+
+# Function to plot model predictions
+def plot_model(degree, title, subplot):
+    # Step 1: Create polynomial features
+    poly = PolynomialFeatures(degree=degree)    #TODO Initialize polynomial features
+    X_poly = poly.fit_transform(X)              #TODO Transform X into polynomial features
+
+    # Step 2: Train Linear Regression model
+    model = LinearRegression()                 #TODO Initialize the model
+    model.fit(X_poly, y)                        #TODO Train the model
+
+    # Step 3: Make predictions
+    X_test_poly = poly.transform(X)        #TODO Transform test points
+    y_pred = model.Predict(X_test_poly)         #TODO Predict values
+
+    # Step 4: Plot
+    plt.subplot(1, 3, subplot)
+    plt.scatter(X, y, color="red", label="Data Points")
+    plt.plot(X_test, y_pred, color="blue", label=f"Degree {degree} Fit")
+    plt.title(title)
+    plt.xlabel("Study Hours")
+    plt.ylabel("Exam Score")
+    plt.legend()
+
+def main():
+    # Plot all three scenarios
+    plt.figure(figsize=(15, 4))
+
+    # Underfitting: Degree 1 (Linear)
+    plot_model(degree=1, title="Underfitting (Linear)", subplot=1)
+
+    # Good Fit: Degree 2 (Quadratic)
+    plot_model(degree=2, title="Good Fit (Quadratic)", subplot=2)
+
+    # Overfitting: Degree 6 (High Polynomial)
+    plot_model(degree=6, title="Overfitting (6th Degree)", subplot=3)
+
+    plt.tight_layout()
+    plt.savefig("fitting_examples.png", dpi=300)  # Save as high-quality PNG
+    plt.close()  # Close the figure to free memory
+    print("Plots saved as fitting_examples.png")
+
+if __name__ == "__main__":
+    main()
+
+################################################3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
