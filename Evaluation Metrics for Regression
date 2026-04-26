@@ -22,3 +22,87 @@ If we collect all errors, we can calculate metrics that summarize model performa
 
 #############################
 
+ Mean Absolute Error (MAE)
+The simplest way to measure how good a regression model is → check how far predictions are from actual values on average.
+
+Formula
+
+M
+A
+E
+=
+1
+n
+∑
+i
+=
+1
+n
+∣
+y
+i
+−
+y
+^
+i
+∣
+MAE= 
+n
+1
+​
+  
+i=1
+∑
+n
+​
+ ∣y 
+i
+​
+ − 
+y
+^
+​
+  
+i
+​
+ ∣
+y
+i
+y 
+i
+​
+  = actual value
+y
+^
+i
+y
+^
+​
+  
+i
+​
+  = predicted value
+∣
+⋅
+∣
+∣⋅∣ = absolute value (ignores sign)
+Think of MAE as: “On average, how many marks (or units) is my prediction off?”
+Example:
+
+Actual (y)	Predicted (ŷ)	Error (y - ŷ)	Absolute Error
+50	48	-2	2
+60	65	+5	5
+70	68	-2	2
+80	75	-5	5
+Total Absolute Error = 2 + 5 + 2 + 5 = 14
+MAE = 14 / 4 = 3.5
+Our model is off by about 3.5 marks on average.
+
+Why MAE is Useful
+
+Easy to understand → same units as the target (marks, prices, etc.).
+Tells average mistake size clearly.
+Doesn’t punish large errors too harshly (treats all errors equally).
+
+##############################
+
