@@ -241,3 +241,59 @@ R² = 1 - (small error/large error) ≈ 0.9
 That means the model explains 90% of the variation in exam scores.
 
 ########################3
+
+MCQ 2 
+A model predicts exam scores R² = 0.85. What does this indicate?
+Ans = 85% of variability in scores is explained by the model ...
+because R² = 0.85 means the model explains 85% of the variability in the exam scores.
+
+###################
+
+R Square - Worked Example
+Let’s calculate R² using a small dataset.
+
+Problem Statement
+
+We want to check how well a regression model predicts Exam Scores from Study Hours. We will:
+
+Create a tiny dataset.
+Train a simple Linear Regression model.
+Calculate R² score using scikit-learn.
+Step-by-Step Explanation
+
+Dataset → Exam Scores increase as Study Hours increase.
+Train a model → Linear Regression finds the best-fit line.
+Predict values → Model makes predictions for the same inputs.
+Calculate R² → Compare how much better the model is compared to predicting just the average.
+Interpretation: The model explains 97% of the variation in exam scores. That’s a very good fit!
+
+#######################  CODE #####
+
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# Step 1: Create a dataset
+data = {
+    "Study_Hours": [1, 2, 3, 4, 5],
+    "Exam_Score": [40, 50, 65, 70, 85]
+}
+df = pd.DataFrame(data)
+
+# Features (X) and Labels (y)
+X = df[["Study_Hours"]]   # Features must be 2D
+y = df["Exam_Score"]
+
+# Step 2: Train Linear Regression model
+model = LinearRegression()
+model.fit(X, y)
+
+# Step 3: Make predictions
+y_pred = model.predict(X)
+
+# Step 4: Calculate R² score
+r2 = r2_score(y, y_pred)
+
+print("Actual Scores:", list(y))
+print("Predicted Scores:", list(y_pred.round(2)))
+print("R² Score:", round(r2, 2))
