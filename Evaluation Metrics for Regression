@@ -362,3 +362,41 @@ print("R² Score:", round(r2, 2))
 
 ###################################
 
+Overfitting and Underfitting .....
+
+When we train a machine learning model, we want it to learn patterns from data that help it make good predictions on new, unseen data.
+But sometimes, the model doesn’t behave as expected. This is where underfitting and overfitting come in.
+
+Underfitting
+
+Happens when the model is too simple to capture the patterns in the data.
+Example: Trying to fit a straight line through data that clearly follows a curve.
+Result: The model makes poor predictions on both training and test data.
+Signs of underfitting: Low training and test accuracy
+
+Overfitting
+
+Happens when the model is too complex and memorizes the training data instead of learning general patterns.
+Example: A very wiggly polynomial curve that passes through almost every training point.
+Result: High training accuracy, but poor test accuracy.
+Signs of overfitting: Very high training accuracy and low test accuracy
+
+image
+Underfitting	image
+Good Fit	image
+Overfitting
+
+A good model finds the balance:
+
+Learns the important patterns from training data
+Still performs well on unseen test data
+
+################
+
+MCQ 3 
+You fit a 10th-degree polynomial to 10 data points.
+The model predicts perfectly for training data but poorly for new data. What is happening?
+
+ANS = Overfitting .. because the model fits the training data perfectly but fails on new data, a classic case  of overfitting.
+
+##########3
