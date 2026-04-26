@@ -297,3 +297,68 @@ r2 = r2_score(y, y_pred)
 print("Actual Scores:", list(y))
 print("Predicted Scores:", list(y_pred.round(2)))
 print("R² Score:", round(r2, 2))
+
+####################
+
+R Square - Practice Problem
+We’re testing how well our prediction model works.
+To do this, we compare the actual values (true outcomes) with the predicted values (model’s output).
+
+The R² Score (Coefficient of Determination) tells us how much of the variation in the actual values can be explained by the model.
+
+R² close to 1 → Very good model fit
+R² around 0 → Weak model fit
+R² < 0 → Model performs worse than a simple average line
+Example Dataset
+
+Sleep Hours (X)	Productivity Score (y)
+4	50
+5	60
+6	65
+7	75
+8	85
+Task
+
+Use LinearRegression from scikit-learn to train a model.
+Predict the values of Productivity_Score from Sleep_Hours.
+Use r2_score(y, y_pred) to calculate the R² value.
+Print the R² score.
+
+Expected Output : 
+Actual Scores: [50, 60, 65, 75, 85]
+Predicted Scores: [np.float64(50.0), np.float64(58.5), np.float64(67.0), np.float64(75.5), np.float64(84.0)]
+R² Score: 0.99
+
+###########  HRE IS THE CODE ####
+
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# Step 1: Create a dataset
+data = {
+    "Sleep_Hours": [4, 5, 6, 7, 8],
+    "Productivity_Score": [50, 60, 65, 75, 85]
+}
+df = pd.DataFrame(data)
+
+# Features (X) and Labels (y)
+X = df[["Sleep_Hours"]]   # Fill the feature column name
+y = df["Productivity_Score"]     # Fill the label column name
+
+# Step 2: Train Linear Regression model
+model = LinearRegression()   # Fill the model class
+model.fit(X, y)   # Train the model
+
+# Step 3: Make predictions
+y_pred = model.predict(X)   # Make predictions
+
+# Step 4: Calculate R² score
+r2 = r2_score(y, y_pred)   # Fill the evaluation function
+
+print("Actual Scores:", list(y))
+print("Predicted Scores:", list(y_pred.round(2)))
+print("R² Score:", round(r2, 2))
+
+###################################
+
