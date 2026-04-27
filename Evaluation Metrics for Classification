@@ -90,3 +90,46 @@ accuracy_score(y_true, y_pred)
 
 Expected Output : Accuracy: 0.8 .. 
 
+######################
+
+Model Evaluation - Precision and Recall..
+
+We learned that Accuracy can sometimes be misleading, especially when one class is much more common than the other.
+For example: If 95 students fail and only 5 pass, a model that always predicts Fail can still have 95% accuracy!, But it never identifies the students who pass.
+This is where Precision and Recall help us.
+
+1. Precision
+Precision asks: Of all the predictions where the model said "Yes", how many were actually correct?
+
+Precision = True Positives / (True Positives + False Positives)
+​
+High precision = very few false alarms.
+
+Example:
+If the model predicted 10 students will pass, and only 7 actually passed,
+Precision = 7/10 = 70%.
+
+2. Recall
+Recall asks: Of all the actual "Yes" cases, how many did the model catch?
+
+Recall = True Positives / (True Positives + False Negatives)
+ 
+High recall = the model finds most of the positive cases.
+
+Example:
+If 10 students actually passed, and the model identified 8 of them,
+Recall = 8/10 = 80%.
+
+Key Points
+
+If the model is very strict (only predicts Pass when very sure) → High Precision, Low Recall.
+If the model is very generous (predicts Pass often) → High Recall, Low Precision.
+
+###################
+
+MCQ 1 :
+If a model only predicts Pass when it is very sure, what happens?
+
+Answer = High Precision, Low Recall ... 
+because predicting only when very sure means the model rarely 
+predicts Pass → high precision (most predicted Pass are correct) but low recall (many actual Pass cases are missed).
