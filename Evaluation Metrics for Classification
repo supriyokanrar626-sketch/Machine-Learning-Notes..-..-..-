@@ -1,1 +1,80 @@
+Model Evaluation - Accuracy
+Now that we can train a classification model, we need a way to measure how good it is.
+The simplest and most common way is called Accuracy.
+
+1. What is Accuracy?
+
+Accuracy is the percentage of predictions that are correct.
+
+t
+e
+x
+t
+A
+c
+c
+u
+r
+a
+c
+y
+=
+Number of Correct Predictions
+Total Predictions
+textAccuracy= 
+Total Predictions
+Number of Correct Predictions
+​
+ 
+2. Example
+
+Suppose we predict whether 10 students Pass (1) or Fail (0) the exam.
+
+Actual    	Predicted
+  1	            1
+  0           	0
+  1	            1
+  1            	0
+  0	            0
+  1           	1
+  0           	0
+  1            	1
+  0	            0
+  1            	1
+
+Total predictions = 10
+Correct predictions = 9
+Accuracy = 9/10 = 90%
+
+3. When Accuracy Works Well
+
+Accuracy is great when the dataset has a balanced number of classes.
+Example: 50% pass, 50% fail → accuracy gives a fair measure.
+
+4. Limitation of Accuracy
+
+Accuracy can be misleading if the dataset is imbalanced.
+
+Example:
+
+Suppose 95 students fail, and only 5 students pass.
+A silly model that always predicts Fail (0) would still get 95/100 correct → 95% accuracy.
+But it completely fails to identify students who pass!
+
+###############333333333333
+
+Accuracy MCQ : 
+Scenario:
+You built a model to predict whether a student will Pass or Fail an exam.
+In your dataset, 95% of students pass and only 5% fail.
+
+The model achieves 95% accuracy by simply predicting “Pass” for every student, without ever identifying a “Fail” case.
+
+Question: Why is this model misleading, even with such high accuracy?
+
+Answer =  Because it ignores the minority class (Fail students)..
+ecause the model ignores the minority class (Fail students), so it cannot identify failing students, 
+making accuracy a misleading metric in imbalanced datasets.
+
+########################
 
