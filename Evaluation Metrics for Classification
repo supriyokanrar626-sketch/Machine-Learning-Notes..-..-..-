@@ -133,3 +133,54 @@ If a model only predicts Pass when it is very sure, what happens?
 Answer = High Precision, Low Recall ... 
 because predicting only when very sure means the model rarely 
 predicts Pass → high precision (most predicted Pass are correct) but low recall (many actual Pass cases are missed).
+
+#####################3
+
+Precision and Recall - Practice Problem ...
+
+We’re testing how well our model’s predictions match the actual outcomes using Precision and Recall.
+
+Precision measures how many of the predicted positives are actually correct.
+Recall measures how many of the actual positives were correctly predicted.
+Example
+
+Actual outcomes (ground truth):
+[0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0]
+
+Predicted outcomes (from our model):
+[1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1]
+
+Task
+
+Import the precision_score and recall_score functions from sklearn.metrics.
+
+Define the actual labels array:
+
+y_true = [0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0]
+Define the predicted labels array:
+
+y_pred = [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1]
+Calculate precision and recall using:
+
+precision_score(y_true, y_pred)
+recall_score(y_true, y_pred)
+Expected Output
+
+Precision: 0.4
+Recall: 0.3333333333333333
+
+#################################    CODE   ##########
+
+from sklearn.metrics import precision_score, recall_score
+
+# TODO: Define the actual labels and predicted labels 
+y_true = [0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0]
+y_pred =  [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1]
+
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+
+print("Precision:", precision)
+print("Recall:", recall)
+
+######################
