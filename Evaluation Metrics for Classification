@@ -184,3 +184,55 @@ print("Precision:", precision)
 print("Recall:", recall)
 
 ######################
+
+Model Evaluation - F1-Score.....
+
+We’ve learned about Precision and Recall:
+
+Precision → Of all the "Yes" predictions, how many were correct?
+Recall → Of all the actual "Yes" cases, how many did we catch?
+Sometimes we want a single number that balances both, that’s where the F1-score comes in.
+
+1. Why Not Just Use Average?
+
+Suppose Precision = 1.0 and Recall = 0.2
+Simple average = (1.0 + 0.2) / 2 = 0.6
+But this doesn’t reflect the big imbalance between Precision and Recall.
+
+We need a measure that penalizes large gaps between them.
+
+2. The F1-Score Formula
+
+The F1-score is the harmonic mean of Precision and Recall:
+
+F1 = 2×(Precision×Recall) / (Precision + Recall)
+
+
+F1 will only be high if both Precision and Recall are high.
+If either one is low, the F1-score drops significantly.
+
+3. Example
+
+Precision = 1.0 (100%)
+Recall = 0.5 (50%)
+
+F1 = 2×(1.0×0.5) / (1.0+0.5) = 0.67
+
+Even though Precision was perfect, F1 is only 0.67 because Recall was low.
+
+###########
+
+ F1 score MCQ  ,,,,
+
+A spam filter model has:
+
+Precision = 1.0
+Recall = 0.2
+Question: If we take a simple average, we get 0.6. Why is this misleading?
+
+Answer = Because average ignores the imbalance ..
+because a simple average of Precision and Recall ignores the imbalance between them; 
+here, high precision but very low recall gives a misleading overall impression.
+
+###################
+
