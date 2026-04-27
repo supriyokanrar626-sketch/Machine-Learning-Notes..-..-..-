@@ -6,25 +6,7 @@ The simplest and most common way is called Accuracy.
 
 Accuracy is the percentage of predictions that are correct.
 
-t
-e
-x
-t
-A
-c
-c
-u
-r
-a
-c
-y
-=
-Number of Correct Predictions
-Total Predictions
-textAccuracy= 
-Total Predictions
-Number of Correct Predictions
-​
+textAccuracy = ( Number of Correct Predictions / Total Predictions )
  
 2. Example
 
@@ -77,4 +59,34 @@ ecause the model ignores the minority class (Fail students), so it cannot identi
 making accuracy a misleading metric in imbalanced datasets.
 
 ########################
+
+Accuracy with Code - Practice Problem..
+
+We’re testing how well our model’s predictions match the actual outcomes using accuracy.
+Accuracy measures the proportion of correct predictions out of the total number of predictions.
+
+The formula for accuracy is:
+
+Accuracy = ( Correct Predictions / Total Predictions)
+
+Example
+
+Actual outcomes (ground truth): [1, 0, 1, 1, 0, 1, 0, 1, 0, 1]
+Predicted outcomes (from our model): [1, 0, 1, 0, 0, 1, 0, 1, 0, 1]
+
+Task : 
+
+Import the accuracy_score function from sklearn.metrics.
+
+Define the actual labels array:
+
+y_true = [1, 1, 0, 1, 0, 0, 1, 0, 1, 1]
+Define the predicted labels array:
+
+y_pred = [1, 0, 0, 1, 0, 1, 1, 0, 0, 1]
+Calculate accuracy using
+
+accuracy_score(y_true, y_pred)
+
+Expected Output : Accuracy: 0.8 .. 
 
