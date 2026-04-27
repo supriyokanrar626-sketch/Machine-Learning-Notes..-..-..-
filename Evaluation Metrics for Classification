@@ -236,3 +236,53 @@ here, high precision but very low recall gives a misleading overall impression.
 
 ###################
 
+F1-Score - Practice Problem ...
+
+The F1 Score is a metric that combines both precision and recall into a single number by taking their harmonic mean.
+It is especially useful when you want to balance false positives and false negatives.
+
+In this exercise, you’ll compute the F1 score for a simple dataset using scikit-learn.
+
+Example
+
+Actual outcomes (ground truth):
+
+[1, 0, 1, 1, 0, 1, 0, 1, 0, 1]
+Predicted outcomes (from our model):
+
+[1, 0, 1, 0, 0, 1, 0, 1, 0, 1]
+The f1_score function will calculate the balance between precision and recall for these predictions.
+
+Task
+
+Import the f1_score function from sklearn.metrics.
+Define the actual labels array:
+y_true = [1, 0, 1, 1, 0, 1, 0, 1, 0, 1]
+
+Define the predicted labels array:
+y_pred = [1, 0, 1, 0, 0, 1, 0, 1, 0, 1]
+
+Calculate F1 score using:
+f1 = f1_score(y_true, y_pred)
+Expected Output
+
+F1-score: 0.9090909090909091
+
+###########  CODE  ##############
+
+# TODO: Import the required function
+from sklearn.metrics import f1_score  # TODO
+
+# Actual labels (ground truth)
+y_true = [1, 0, 1, 1, 0, 1, 0, 1, 0, 1]  # TODO: Fill the actual outcomes
+
+# Predictions from our model
+y_pred = [1, 0, 1, 0, 0, 1, 0, 1, 0, 1] # TODO: Fill the predicted outcomes
+
+# Calculate F1 score
+f1 = f1_score(y_true, y_pred)  # TODO: Use the correct function
+
+# Print result
+print("F1-score:", f1)  # TODO: Ensure correct print format
+
+########################
