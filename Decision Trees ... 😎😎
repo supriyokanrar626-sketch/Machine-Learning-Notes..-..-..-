@@ -188,3 +188,59 @@ print("Predictions:", predictions.tolist())
 
 ###################
 
+Decision Tree - Practice Problem 2..
+
+We’re testing how well a Decision Tree can learn patterns from a small dataset and make predictions.
+In this exercise, you will train a Decision Tree model to predict whether a student passes an exam based on their Study Hours and Attendance.
+
+A Decision Tree splits the data based on feature values to classify outcomes.
+
+If the combination of Study Hours and Attendance meets a threshold → the prediction is classified as 1 (Pass).
+Otherwise → the prediction is classified as 0 (Fail).
+Dataset (student_pass.csv)
+
+StudentID	Name	Study_Hours	Attendance	Pass
+1	John	2	60	0
+2	Sarah	3	70	0
+3	Amit	4	80	1
+4	Emma	5	85	1
+5	Liam	6	90	1
+
+Task
+
+Load the dataset using pandas.
+Separate features and label:
+Features → Study_Hours and Attendance
+Label → Pass
+Train a Decision Tree Classifier with random_state=42.
+Generate predictions for the training dataset.
+Print the predictions as a list.
+Expected Output
+
+Predictions: [0, 0, 1, 1, 1]
+
+###########  FULL  CODE #########
+
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
+# 1. Load the dataset using pandas
+# (Assuming the file is named 'student_pass.csv')
+df = pd.read_csv('student_pass.csv')
+
+# 2. Separate features and label
+X = df[['Study_Hours', 'Attendance']]
+y = df['Pass']
+
+# 3. Train a Decision Tree Classifier with random_state=42
+model = DecisionTreeClassifier(random_state=42)
+model.fit(X, y)
+
+# 4. Generate predictions for the training dataset
+predictions = model.predict(X)
+
+# 5. Print the predictions as a list
+print("Predictions:", predictions.tolist())
+
+##########################
+
