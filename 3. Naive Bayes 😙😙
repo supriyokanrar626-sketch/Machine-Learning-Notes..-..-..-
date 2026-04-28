@@ -55,3 +55,12 @@ Works really well on text data (spam detection, sentiment analysis, news categor
 Needs less data compared to other algorithms.
 
 #########################################
+
+Naive Bayes MCQ
+You receive an email containing the words “free” and “win”.
+How does Naive Bayes determine if it is spam?
+
+ANSWER = Naive Bayes multiplies the probabilities of the words given each class and chooses the class with the highest probability.
+Words like “free” and “win” appear more often in spam emails, so:
+
+👉 Probability of Spam becomes higher..
