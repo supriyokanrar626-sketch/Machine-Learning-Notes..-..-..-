@@ -271,3 +271,96 @@ for row in probabilities:
 
 ################################################
 
+Random Forest - Practice Problem 2 ..
+
+We’re testing how well a Random Forest can classify whether a student Passes or Fails based on their Study Hours and Attendance.
+
+A Random Forest is an ensemble model that combines multiple decision trees:
+
+Each tree makes a prediction.
+The forest takes a majority vote for the final prediction.
+We can also get probabilities for each class (Fail, Pass).
+Dataset (student_performance.csv)
+
+Study_Hours	Attendance	Pass
+2	60	0
+3	70	0
+4	80	1
+5	85	1
+6	90	1
+
+Example Predictions
+
+Study_Hours	Attendance	Fail Probability	Pass Probability	Prediction
+2	60	0.6	0.4	Fail
+3	70	0.6	0.4	Fail
+4	80	0.4	0.6	Pass
+5	85	0.3	0.7	Pass
+6	90	0.3	0.7	Pass
+
+Task
+
+Convert the CSV dataset into a pandas DataFrame.
+
+Split into:
+
+X → features (Study_Hours, Attendance)
+y → target (Pass)
+Train a RandomForestClassifier with:
+
+n_estimators=5
+random_state=42
+Predict outcomes (Pass or Fail) for the dataset.
+
+Use predict_proba() to get probabilities for each class.
+
+Round probabilities to 1 decimal place.
+
+Print results:
+
+Predicted classes
+Probabilities for each row with a comment showing percentage Fail/Pass
+
+Expected Output :
+
+Predictions: [0, 0, 1, 1, 1]
+[0.6 0.4]   # 60% Fail, 40% Pass
+[0.6 0.4]   # 60% Fail, 40% Pass
+[0.4 0.6]   # 40% Fail, 60% Pass
+[0.3 0.7]   # 30% Fail, 70% Pass
+[0.3 0.7]   # 30% Fail, 70% Pass
+
+###########  FULL  CODE  ##########
+
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+
+# Setup Data
+data = {
+    "Study_Hours": [2, 3, 4, 5, 6],
+    "Attendance": [60, 70, 80, 85, 90],
+    "Pass": [0, 0, 1, 1, 1]
+}
+df = pd.DataFrame(data)
+
+# Features and Labels
+X = df[['Study_Hours', 'Attendance']]
+y = df['Pass']
+
+# Train Model
+model = RandomForestClassifier(n_estimators=5, random_state=42)
+model.fit(X, y)
+
+# Predictions and Probabilities
+predictions = model.predict(X)
+probabilities = model.predict_proba(X)
+
+print("Predictions:", predictions.tolist())
+
+# Your Loop
+for row in probabilities:
+    fail, pass_ = row
+    # This prints the clean brackets AND the accurate percentage
+    print(f"[{fail:.1f} {pass_:.1f}]   # {int(round(fail, 1)*100)}% Fail, {int(round(pass_, 1)*100)}% Pass")
+
+#####################
