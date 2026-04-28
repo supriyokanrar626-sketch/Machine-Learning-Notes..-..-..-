@@ -1,0 +1,57 @@
+Naive Bayes..
+
+So far, we’ve seen: Logistic Regression(uses probabilities but assumes a straight boundary) and Decision Trees & Random Forests(make predictions with rules)
+Now, let’s learn another very popular algorithm: Naive Bayes.
+It is simple, very fast, and especially good for text classification (like spam filters).
+
+Intuition
+
+Think about how you decide if an email is spam:
+
+If the email has words like “free”, “win”, “offer” → you suspect spam.
+If it has words like “meeting”, “project”, “schedule” → probably not spam.
+This is exactly what Naive Bayes does → it looks at features (words) and uses probabilities to decide the class.
+
+Bayes’ Theorem
+
+Bayes’ theorem tells us: “How likely is this class, given the evidence we see?”
+You see some evidence, and you want to guess the most likely cause.
+Imagine:
+
+If someone is carrying an umbrella ☂️
+You think:
+👉 “Is it raining?”
+
+You don’t know for sure, but:
+
+If umbrellas are usually used in rain → high chance it’s raining
+🔄 Reverse thinking (this is the key!)
+
+Instead of:
+
+“If it rains → people carry umbrellas”
+
+Bayes asks:
+
+“If I see an umbrella → how likely is rain?”
+
+For example:
+Probability(email is spam | contains word “offer”)
+Probability(email is not spam | contains word “offer”)
+The class with the higher probability wins.
+
+Why “Naive”?
+
+Naive Bayes assumes all features are independent.
+
+Example: It assumes the word “free” and the word “win” are unrelated.
+In reality, they often come together in spam emails — but the algorithm ignores this dependency.
+Surprisingly, even with this naive assumption, it works really well in practice!
+
+Advantages of Naive Bayes
+
+Very fast and simple to train.
+Works really well on text data (spam detection, sentiment analysis, news categorization).
+Needs less data compared to other algorithms.
+
+#########################################
