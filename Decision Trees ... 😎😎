@@ -136,14 +136,16 @@ A Decision Tree splits the data based on feature values to classify outcomes.
 
 If the combination of Study Hours and Attendance meets a threshold → the prediction is classified as 1 (Pass).
 Otherwise → the prediction is classified as 0 (Fail).
+
 Example Dataset
 
-Study Hours	Attendance	Pass
-2	60	0
-3	70	0
-4	80	1
-5	85	1
-6	90	1
+Study_Hours	Attendance	Pass
+ 2	          60  	0
+ 3	          70      0
+ 4	          80	1
+ 5	          85	1
+ 6	          90	1
+
 Task
 
 Convert the dictionary into a pandas DataFrame.
@@ -153,6 +155,36 @@ Label → Pass
 Train a Decision Tree Classifier with random_state=42.
 Generate predictions for the training dataset.
 Print the predictions as a list.
-Expected Output
 
-Predictions: [0, 0, 1, 1, 1]
+Expected Output : Predictions: [0, 0, 1, 1, 1]
+
+###########  CODE #########
+
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
+# 1. Convert the dictionary into a pandas DataFrame
+data = {
+    'Study_Hours': [2, 3, 4, 5, 6],
+    'Attendance': [60, 70, 80, 85, 90],
+    'Pass': [0, 0, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+
+# 2. Separate features (X) and label (y)
+X = df[['Study_Hours', 'Attendance']]
+y = df['Pass']
+
+# 3. Train a Decision Tree Classifier with random_state=42
+model = DecisionTreeClassifier(random_state=42)
+model.fit(X, y)
+
+# 4. Generate predictions for the training dataset
+predictions = model.predict(X)
+
+# 5. Print the predictions as a list
+print("Predictions:", predictions.tolist())
+
+###################
+
