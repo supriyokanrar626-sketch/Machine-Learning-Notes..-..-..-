@@ -176,4 +176,98 @@ for row in probabilities:
     fail, pass_ = row
     print(f"[{fail:.1f} {pass_:.1f}]   # {int(fail*100)}% Fail, {int(pass_*100)}% Pass")
 
-#########################
+#######################################################
+
+Random Forest - Practice Problem..
+
+We’re testing how well a Random Forest can classify outcomes (Pass or Fail) based on study hours and absences.
+
+A Random Forest is an ensemble model that combines multiple decision trees:
+
+Each tree makes a prediction.
+The forest takes a majority vote for the final prediction.
+We can also get probabilities for each class (Fail, Pass).
+Example Dataset
+
+Hours_Studied	Absences	Result
+2	8	Fail
+4	6	Fail
+7	2	Pass
+8	1	Pass
+10	0	Pass
+
+Example Predictions
+
+Hours_Studied	Absences	Fail Probability	Pass Probability	Prediction
+2	8	0.8	0.2	Fail
+4	6	0.6	0.4	Fail
+7	2	0.2	0.8	Pass
+8	1	0.1	0.9	Pass
+10	0	0.0	1.0	Pass
+
+Task
+
+Convert the dataset into a DataFrame.
+
+Split into:
+
+X → features (Hours_Studied, Absences)
+y → target (Result)
+Train a RandomForestClassifier with:
+
+n_estimators=5
+random_state=42
+Predict outcomes (Pass or Fail).
+
+Use predict_proba() to get probabilities for each class.
+
+Round probabilities to 1 decimal place.
+
+Print results in the following format:
+
+Expected Output
+
+Predictions: [0, 0, 1, 1, 1]
+[0.6 0.4]   # 60% Fail, 40% Pass
+[0.6 0.4]   # 60% Fail, 40% Pass
+[0.4 0.6]   # 40% Fail, 60% Pass
+[0.3 0.7]   # 30% Fail, 70% Pass
+[0.3 0.7]   # 30% Fail, 70% Pass
+
+####################################  FULL  CODE  ##############
+
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+
+# 1. Convert the dataset into a DataFrame
+data = {
+    'Hours_Studied': [2, 4, 7, 8, 10],
+    'Absences': [8, 6, 2, 1, 0],
+    'Result': [0, 0, 1, 1, 1]  # 0 = Fail, 1 = Pass
+}
+
+df = pd.DataFrame(data)
+
+# 2. Split into X (features) and y (target)
+X = df[['Hours_Studied', 'Absences']]
+y = df['Result']
+
+# 3. Train a RandomForestClassifier
+# We use n_estimators=5 and random_state=42 as requested
+model = RandomForestClassifier(n_estimators=5, random_state=42)
+model.fit(X, y)
+
+# 4. Predict outcomes and get probabilities
+predictions = model.predict(X)
+probabilities = model.predict_proba(X)
+
+# 5. Output Results
+print("Predictions:", predictions.tolist())
+
+for row in probabilities:
+    fail, pass_ = row
+    # Round to 1 decimal place and format output
+    print(f"[{fail:.1f} {pass_:.1f}]   # {int(round(fail, 1)*100)}% Fail, {int(round(pass_, 1)*100)}% Pass")
+
+################################################
+
