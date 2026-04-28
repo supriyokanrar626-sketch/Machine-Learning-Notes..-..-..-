@@ -1,0 +1,43 @@
+Decision Tree .... 
+
+So far, we learned Logistic Regression, a model that works well when the relationship is simple and mostly linear.
+But not all problems can be solved with a straight line.
+This is where Decision Trees come in.
+
+1. What is a Decision Tree?
+
+A Decision Tree is like a flowchart made of yes/no questions.
+At each step, the model asks a question about the data and splits it into smaller groups.
+Think of it as step-by-step reasoning, just like humans do.
+
+2. Why Not Just Use Logistic Regression?
+
+Logistic Regression draws a straight line (boundary) to separate classes.
+But some problems need branching rules instead of a single line.
+
+Example: Predict if a student will Pass/Fail.
+
+If they studied less than 3 hours → Fail.
+If they studied more than 3 hours → Next check:
+Did they sleep at least 6 hours?
+Yes → Pass
+No → Fail
+Here, Logistic Regression would struggle (since the rule is not a simple straight line).
+A Decision Tree handles it naturally.
+
+3. Decision Trees in Action
+
+Example (Student Pass/Fail):
+
+image
+      Did the student study > 3 hours?
+               /         \
+             No           Yes
+            Fail     Did they sleep > 6 hours?
+                            /       \
+                          No         Yes
+                        Fail         Pass
+
+Each question = a split.
+Each leaf node = final prediction (Pass/Fail).
+
