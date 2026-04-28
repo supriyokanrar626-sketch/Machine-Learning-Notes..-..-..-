@@ -1,1 +1,62 @@
+Random Forest...
+
+We just learned about Decision Trees, a model that predicts by asking a series of if/else questions.
+Decision Trees are easy to understand, but there’s a problem: A single tree can sometimes overfit (it memorizes training data and does poorly on new data).
+So how can we make predictions more reliable? That’s where Random Forests come in.
+
+1. What is a Random Forest?
+A Random Forest is simply a collection of many Decision Trees.
+
+Each tree is trained on a slightly different part of the dataset.
+When predicting, all trees “vote” and the majority decision wins.
+
+Analogy:
+
+Imagine asking one friend for advice, they might be wrong.
+But if you ask 100 friends and most say the same thing → it’s probably correct.
+That’s the idea of Random Forests: wisdom of the crowd.
+
+2. How Random Forests Work
+
+Create many Decision Trees
+Each tree sees a random subset of data and features.
+Make predictions with all trees
+Each tree gives its answer (class).
+Take a vote
+The most common answer among all trees is the final prediction.
+
+3. Why Use Random Forests?
+
+More accurate than a single Decision Tree.
+Less overfitting (since errors from different trees cancel out).
+Works well on both classification (Pass/Fail, Spam/Not Spam) and regression (predicting numbers).
+4. Example Intuition
+
+image
+Predict whether a student will Pass (1) or Fail (0):
+
+Tree 1 → Pass
+Tree 2 → Fail
+Tree 3 → Pass
+Tree 4 → Pass
+Final Prediction → Pass (since 3 out of 4 trees voted Pass).
+
+############################
+
+Random Forest MCQ :
+
+A Random Forest predicts whether a student will Pass (1) or Fail (0):
+
+Tree 1 → Pass
+Tree 2 → Fail
+Tree 3 → Pass
+Tree 4 → Pass
+Question: What is the final prediction?
+
+ANSWER = The final prediction is Pass (1)...
+In a Random Forest, the final decision is determined by Majority Voting. 
+Since the individual trees act like a committee, the outcome with the most "votes" wins.
+
+#############################
+
 
