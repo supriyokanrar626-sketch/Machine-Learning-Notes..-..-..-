@@ -299,4 +299,77 @@ for msg, prob in zip(df["Message"], probabilities):
 
 ###########################
 
+Naive Bayes - Practice Problem 2..
+
+We’re testing how well a Naive Bayes model can classify messages as Spam or Not Spam.
+
+A Multinomial Naive Bayes model is ideal for text classification:
+
+Each message is converted into numeric features using CountVectorizer.
+The model learns the probability of words appearing in Spam vs Non-Spam messages.
+Predictions and probabilities can be generated for each message.
+Dataset (student_notifications.csv)
+
+Message	                              Spam
+Win a free laptop today             	1
+Meeting postponed to 3pm	            0
+Claim your free movie tickets	        1
+Submit your assignment by Friday	    0
+Earn $5000 working from home	        1
+
+Task :
+
+Load the CSV file into a pandas DataFrame.
+Convert the text messages into numeric features using CountVectorizer.
+Extract the target labels from the Spam column.
+Train a Multinomial Naive Bayes model using the features and labels.
+Predict on the same dataset and print the predicted classes.
+Use predict_proba() to get probabilities for each class.
+Expected Output
+
+Feature Names: ['3pm' '5000' 'assignment' 'by' 'claim' 'earn' 'free' 'friday' 'from'
+ 'home' 'laptop' 'meeting' 'movie' 'postponed' 'submit' 'tickets' 'to'
+ 'today' 'win' 'working' 'your']
+Predictions: [1, 0, 1, 0, 1]
+Message: Win a free laptop today
+[0.05 0.95]   # Probabilities
+
+Message: Meeting postponed to 3pm
+[0.95 0.05]   # Probabilities
+
+Message: Claim your free movie tickets
+[0.06 0.94]   # Probabilities
+
+Message: Submit your assignment by Friday
+[0.96 0.04]   # Probabilities
+
+Message: Earn $5000 working from home
+[0.04 0.96]   # Probabilities
+
+#########################################3333
+
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+df = pd.read_csv("student_notifications.csv")
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df["Message"])
+y = df["Spam"]
+
+model = MultinomialNB()
+model.fit(X, y)
+
+predictions = model.predict(X)
+probabilities = model.predict_proba(X)
+
+print("Predictions : ", predictions.tolist())
+print()
+
+for msg, prob in zip(df["Message"], probabilities) :
+   not_spam, spam = prob
+   print(f"Message : {msg}")
+   print(f"[{not_spam:.2f} {spam:.2f}]   # Probabilities\n")
+
+################################
 
