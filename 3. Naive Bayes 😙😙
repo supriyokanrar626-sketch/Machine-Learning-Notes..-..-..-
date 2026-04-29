@@ -64,3 +64,103 @@ ANSWER = Naive Bayes multiplies the probabilities of the words given each class 
 Words like “free” and “win” appear more often in spam emails, so:
 
 👉 Probability of Spam becomes higher..
+
+######################
+
+Naive Bayes - Worked Example.. READ CAREFULLY ..
+
+We’ve learned the theory of Naive Bayes, now let’s see it in action!
+We’ll build a spam filter using simple word counts.
+
+Step 1: Create the Dataset
+
+We’ll create a tiny dataset of text messages. Each message is labeled as Spam (1) or Not Spam (0).
+
+import pandas as pd
+
+data = {
+    "Message": [
+        "Win a free lottery ticket",
+        "Free money offer just for you",
+        "Meeting at 10am tomorrow",
+        "Project deadline extended",
+        "Congratulations you won a prize"
+    ],
+    "Spam": [1, 1, 0, 0, 1]
+}
+
+df = pd.DataFrame(data)
+print(df)
+Dataset Example
+
+Message	Spam
+Win a free lottery ticket	1
+Free money offer just for you	1
+Meeting at 10am tomorrow	0
+Project deadline extended	0
+Congratulations you won a prize	1
+Step 2: Convert Text into Features
+
+Naive Bayes cannot work directly with raw text.
+We need to convert words into numeric features.
+
+We’ll use CountVectorizer, which turns each word into a number representing how often it appears in a message.
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df["Message"])  # Features
+y = df["Spam"]                               # Labels
+
+print("Feature Names:", vectorizer.get_feature_names_out())  #gives the list of words (features)
+Output
+
+Feature Names: ['10am' 'at' 'congratulations' 'deadline' 'extended' 'for' 'free' 'just'
+ 'lottery' 'meeting' 'money' 'offer' 'prize' 'project' 'ticket' 'tomorrow'
+ 'win' 'won' 'you'] 
+Step 3: Train a Naive Bayes Model
+
+Now that we have numeric features, we can train our model.
+We’ll use Multinomial Naive Bayes, which works well for word counts.
+
+from sklearn.naive_bayes import MultinomialNB
+
+# Create and train the model
+model = MultinomialNB()
+model.fit(X, y)
+Step 4: Make Predictions
+
+Let’s test our model on the training data.
+
+predictions = model.predict(X)
+print("Predictions:", predictions.tolist())
+Output
+
+Predictions: [1, 1, 0, 0, 1]
+Step 5: Probability of Predictions
+
+Naive Bayes doesn’t just give the class — it also gives the probability of Spam vs Not Spam.
+
+probabilities = model.predict_proba(X)
+for msg, row in zip(df["Message"], probabilities):
+    not_spam, spam = row
+    print(f"Message: {msg}\n[{not_spam:.2f} {spam:.2f}]   # {int(not_spam*100)}% Not Spam, {int(spam*100)}% Spam\n")
+Expected Output
+
+Message: Win a free lottery ticket
+[0.07 0.93]   # 6% Not Spam, 93% Spam
+
+Message: Free money offer just for you
+[0.02 0.98]   # 1% Not Spam, 98% Spam
+
+Message: Meeting at 10am tomorrow
+[0.97 0.03]   # 96% Not Spam, 3% Spam
+
+Message: Project deadline extended
+[0.92 0.08]   # 91% Not Spam, 8% Spam
+
+Message: Congratulations you won a prize
+[0.07 0.93]   # 6% Not Spam, 93% Spam
+
+##############   FULL CODE BELOW .....###
+
