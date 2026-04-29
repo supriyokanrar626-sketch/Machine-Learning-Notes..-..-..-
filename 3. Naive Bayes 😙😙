@@ -204,4 +204,99 @@ for msg, row in zip(df["Message"], probabilities):
 
 ######################################
 
+Naive Bayes - Practice Problem
+We’re testing how well a Naive Bayes model can classify text messages as Spam or Not Spam.
+
+A Multinomial Naive Bayes model is ideal for text classification tasks like email or SMS spam detection:
+
+Each message is converted into numeric features using CountVectorizer (bag-of-words representation).
+The model learns the probability of words appearing in Spam vs Non-Spam messages.
+Predictions and probabilities can be generated for each message.
+Example Dataset
+
+Message	Spam
+Exclusive offer just for you	1
+Let's meet tomorrow morning	0
+Congratulations you won a prize	1
+Project review meeting at 5pm	0
+Free entry in a lucky draw	1
+Task
+
+Convert the dictionary into a pandas DataFrame.
+Transform the text into numerical features using CountVectorizer.
+Split the dataset into features (X) and labels (y).
+Train a Multinomial Naive Bayes model (MultinomialNB).
+Generate predictions for the training dataset.
+Print the predictions as a list.
+Expected Output
+
+Feature Names: ['5pm' 'at' 'congratulations' 'draw' 'entry' 'exclusive' 'for' 'free' 'in'
+ 'just' 'let' 'lucky' 'meet' 'meeting' 'morning' 'offer' 'prize' 'project'
+ 'review' 'tomorrow' 'won' 'you']
+
+Predictions: [1, 0, 1, 0, 1]
+
+Message: Exclusive offer just for you
+[0.03 0.97]   # Probabilities
+
+Message: Let’s meet tomorrow morning
+[0.95 0.05]   # Probabilities
+
+Message: Congratulations you won a prize
+[0.05 0.95]   # Probabilities
+
+Message: Project review meeting at 5pm
+[0.98 0.02]   # Probabilities
+
+Message: Free entry in a lucky draw
+[0.04 0.96]   # Probabilities
+
+#####################################   FULL CODE BELOW ###########
+
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+# 1. Convert the dictionary into a pandas DataFrame
+data = {
+    "Message": [
+        "Exclusive offer just for you",
+        "Let's meet tomorrow morning",
+        "Congratulations you won a prize",
+        "Project review meeting at 5pm",
+        "Free entry in a lucky draw"
+    ],
+    "Spam": [1, 0, 1, 0, 1]
+}
+
+df = pd.DataFrame(data)
+
+# 2. Transform the text into numerical features using CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df["Message"])
+y = df["Spam"]
+
+# Print Feature Names as requested
+print("Feature Names:", vectorizer.get_feature_names_out().tolist())
+print()
+
+# 3. Train a Multinomial Naive Bayes model
+model = MultinomialNB()
+model.fit(X, y)
+
+# 4. Generate predictions for the training dataset
+predictions = model.predict(X)
+probabilities = model.predict_proba(X)
+
+# 5. Print the predictions and detailed results
+print("Predictions:", predictions.tolist())
+print()
+
+for msg, prob in zip(df["Message"], probabilities):
+    not_spam, spam = prob
+    print(f"Message: {msg}")
+    print(f"[{not_spam:.2f} {spam:.2f}]   # Probabilities\n")
+
+###########################
+
 
