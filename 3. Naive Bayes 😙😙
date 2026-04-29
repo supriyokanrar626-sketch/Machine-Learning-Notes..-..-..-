@@ -373,3 +373,91 @@ for msg, prob in zip(df["Message"], probabilities) :
 
 ################################
 
+Project - Credit Card Fraud Detection..   
+
+In this exercise, we will use Multinomial Naive Bayes, Decision Tree, and Random Forest to predict whether a 
+credit card transaction is fraudulent based on transaction features.
+
+You’ll practice filling in the missing code sections (#TODO) to complete the workflow.
+
+Example Dataset (creditcard.csv)
+
+Feature1	Feature2	...	FeatureN	Class
+0.1	-1.2	...	0.5	0
+-0.3	0.5	...	-1.1	1
+0.2	-0.7	...	0.0	0
+...	...	...	...	...
+Features → input features (X)
+Class → target label (y, where 0 = Not Fraud, 1 = Fraud)
+Task
+
+Load Data → From creditcard.csv (features → X, Class → y).
+Scale Features → Use MinMaxScaler() to scale features to [0,1] for MultinomialNB.
+Train-Test Split → Use train_test_split with test_size=0.2, random_state=42, stratify=y.
+Train Models → Multinomial Naive Bayes, Decision Tree, and Random Forest.
+Evaluate Models → Compute Accuracy for each model.
+Display Results → Print the model name and its accuracy.
+Learning Outcomes
+
+Understand how to handle imbalanced datasets in classification.
+Compare Naive Bayes vs Decision Trees vs Random Forest performance.
+Practice the full ML workflow: loading data, scaling, splitting, training, evaluating.
+Expected Output
+
+Multinomial Naive Bayes Accuracy: 99.83%
+Decision Tree Accuracy: 99.91%
+Random Forest Accuracy: 99.96%
+
+############  CODE ###########
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 1. Load Data
+df = pd.read_csv('creditcard.csv')
+
+# Separate Features (X) and Target (y)
+X = df.drop(columns=['Class'])
+y = df['Class']
+
+# 2. Scale Features
+# MultinomialNB requires non-negative values, so we scale to [0, 1]
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
+
+# 3. Train-Test Split
+# stratify=y ensures both sets have the same percentage of fraud cases
+X_train, X_test, y_train, y_test = train_test_split(
+    X_scaled, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 4. Train Models
+# Initialize models
+nb_model = MultinomialNB()
+dt_model = DecisionTreeClassifier(random_state=42)
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Fit models
+nb_model.fit(X_train, y_train)
+dt_model.fit(X_train, y_train)
+rf_model.fit(X_train, y_train)
+
+# 5. Evaluate Models
+models = {
+    "Multinomial Naive Bayes": nb_model,
+    "Decision Tree": dt_model,
+    "Random Forest": rf_model
+}
+
+# 6. Display Results
+for name, model in models.items():
+    predictions = model.predict(X_test)
+    accuracy = accuracy_score(y_test, predictions)
+    print(f"{name} Accuracy: {accuracy:.2%}")
+
+####################
