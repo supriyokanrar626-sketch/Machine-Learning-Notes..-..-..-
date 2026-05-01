@@ -206,3 +206,40 @@ plt.close()
 print("✅ Analysis complete. The visualization has been saved as 'kmeans_clusters.png'.")
 
 ########################
+
+K-Means - Practice Problem 2
+We’re testing how well K-Means Clustering can group data points into clusters without using any labels.
+
+In this exercise, you will use a dataset of customers with their Age and Annual_Income to find patterns and group them into clusters.
+
+K-Means works by:
+
+Choosing a number of clusters (k).
+Assigning points to the nearest cluster center.
+Updating cluster centers until they stabilize.
+Dataset (customer_data.csv)
+
+CustomerID	Age	Annual_Income
+1	25	50000
+2	32	60000
+3	40	80000
+4	28	55000
+5	35	75000
+6	45	90000
+7	30	62000
+8	50	95000
+
+Task
+
+Load the dataset using pandas.
+Select features: Age and Annual_Income.
+Apply KMeans clustering with n_clusters=3.
+Predict the cluster labels for each customer.
+Plot the clusters with different colors.
+Mark the cluster centroids with red "X".
+
+Expected Output :
+
+image
+
+####################################
