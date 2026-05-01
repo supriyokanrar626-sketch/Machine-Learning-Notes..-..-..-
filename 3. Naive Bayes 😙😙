@@ -461,3 +461,43 @@ for name, model in models.items():
     print(f"{name} Accuracy: {accuracy:.2%}")
 
 ####################
+
+Clean IMDB Movie Review Dataset
+Okay, Let's move on to the second part. This part is crucial because real-world data is almost never "clean."
+
+Part2
+Clean and Prepare the IMDB Movie Review Dataset using Python and Pandas
+
+Problem Statement
+Our exploration in Part 1 confirmed that raw text is messy. It contains HTML tags, punctuation, inconsistent capitalization, and many common words (like "the", "a", "is") that don't add much meaning for sentiment analysis. These common words are called stop words.
+You are given the IMDB Dataset.csv file, which contains thousands of movie reviews. Your task is to write a Python script that systematically cleans this data to make it suitable for a machine learning model.
+
+You will:
+
+Load the IMDB Dataset.csv file using the pandas library.
+Create a single, powerful cleaning function that performs the following steps on a piece of text:
+Removes all HTML tags (e.g., <br />).
+Converts all text to lowercase.
+Removes all punctuation and any characters that are not letters.
+Removes common English "stop words" using a standard library (you will be guided on how to do this).
+Apply this function to every review in the dataset.
+Save the cleaned reviews and their original sentiments into a new file named OUTPUT_FILE 
+(
+i
+.
+e
+−
+(i.e− cleaned_imdb_dataset.csv
+)
+.
+).
+Expected Output
+The first three lines of your cleaned_imdb_dataset.csv file should look like this
+
+cleaned_review,sentiment
+one reviewers mentioned watching oz episode youll...
+wonderful little production filming technique unassuming...
+thought wonderful way spend time hot summer weekend...
+
+##############################
+
