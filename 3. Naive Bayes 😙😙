@@ -529,14 +529,16 @@ print("✅ Cleaning complete! The dataset is now 'Machine Learning' ready.")
 
 #################################
 
+Building and Saving the Sentiment Model..
 
-Building and Saving the Sentiment Model
 Welcome to the final stage of our project: the Movie Review Sentiment Analyzer!
 
-You have explored and cleaned the data. Now it's time to build the "brain" of our application-the machine learning model. This final project will transform your prepared data into an intelligent tool capable of predicting sentiment.
+You have explored and cleaned the data. Now it's time to build the "brain" of our application-the machine learning model. 
+This final project will transform your prepared data into an intelligent tool capable of predicting sentiment.
 
 Part3
-Objective: Your mission is to complete a Python script (model.py) that loads the cleaned movie review data, trains a text classification model, and saves all necessary components for future predictions. This final step packages your work into a reusable, intelligent artifact.
+Objective: Your mission is to complete a Python script (model.py) that loads the cleaned movie review data, trains a text classification model,
+and saves all necessary components for future predictions. This final step packages your work into a reusable, intelligent artifact.
 
 Input / Output:
 
@@ -586,3 +588,82 @@ Review: 'It was an okay film, not great but not bad either.'
 Predicted Sentiment: negative
 
 #########################################  CODE BELOW ################3
+
+# model.py
+
+# Import libraries
+import pandas as pd
+import pickle
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+
+print("--- Starting Model Training ---")
+
+# Task 1: Load the Data
+df = pd.read_csv("cleaned_imdb_dataset.csv")
+
+# Task 2: Prepare Features and Target
+X = df['cleaned_review']
+y = df['sentiment']
+
+# Task 3: Train-Test Split (80/20)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Task 4: Vectorization
+vectorizer = CountVectorizer()
+
+# Fit only on training data
+X_train_vec = vectorizer.fit_transform(X_train)
+
+# Transform test data
+X_test_vec = vectorizer.transform(X_test)
+
+# Task 5: Train Model
+model = MultinomialNB()
+model.fit(X_train_vec, y_train)
+
+# Task 6: Evaluate
+y_pred = model.predict(X_test_vec)
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+# Task 7: Save Model + Vectorizer
+with open("sentiment_model.pkl", "wb") as f:
+    pickle.dump((vectorizer, model), f)
+
+print("--- Model and Vectorizer saved successfully to sentiment_model.pkl! ---")
+
+
+# ==============================
+# 🔮 Prediction Example
+# ==============================
+
+print("\n--- Running Prediction Example ---")
+
+# Load model back
+with open("sentiment_model.pkl", "rb") as f:
+    vectorizer, model = pickle.load(f)
+
+# Example reviews
+reviews = [
+    "This movie was absolutely fantastic, one of the best I have seen all year!",
+    "A complete waste of time. The plot was boring and the acting was terrible.",
+    "It was an okay film, not great but not bad either."
+]
+
+# Predict
+for review in reviews:
+    review_vec = vectorizer.transform([review])
+    prediction = model.predict(review_vec)[0]
+    
+    print(f"\nReview: '{review}'")
+    print(f"Predicted Sentiment: {prediction}")
+
+########################################
+
