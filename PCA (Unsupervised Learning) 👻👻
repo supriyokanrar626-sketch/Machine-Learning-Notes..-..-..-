@@ -42,3 +42,59 @@ Your dataset contains redundant features that are highly correlated.What would P
 
 ANSWER = combine the redundant features into fewer new features while keeping most of the info..
 
+###############################
+
+PCA - Worked Example
+Let’s see PCA (Principal Component Analysis) in action on a simple dataset.
+
+Step 1: Import Libraries
+We’ll use sklearn to generate high-dimensional data and matplotlib to visualize the reduced dimensions.
+
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+Step 2: Load a Dataset
+We’ll use the famous Iris dataset which has 4 features (dimensions).
+PCA will help us reduce it to 2 dimensions so we can plot it.
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+Step 3: Apply PCA
+Now we let PCA reduce the 4 features down to 2 principal components.
+
+# Apply PCA with 2 components
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+n_components=2 → we reduce the data to 2 dimensions.
+fit_transform(X) → PCA learns the directions of maximum variance and projects the data.
+Step 4: Visualize the Reduced Data
+We can now plot the 2D transformed data, coloring by species.
+
+# Plot the PCA results
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis')
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.title("PCA on Iris Dataset")
+plt.savefig("pca_iris.png")  # saves image
+plt.close()
+The plot will show:
+
+Iris flowers grouped into clusters in 2D space.
+Each color represents one species.
+Step 5: Key Takeaways
+
+PCA reduced 4D data into 2D while keeping most of the information.
+The data is easier to visualize and patterns become clearer.
+PCA is useful for visualization, noise reduction, and speeding up models.
+
+Expected Output :
+
+image
+
+####################  FULL CODE #########
+
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
