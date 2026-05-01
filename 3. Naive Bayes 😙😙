@@ -481,16 +481,9 @@ Converts all text to lowercase.
 Removes all punctuation and any characters that are not letters.
 Removes common English "stop words" using a standard library (you will be guided on how to do this).
 Apply this function to every review in the dataset.
-Save the cleaned reviews and their original sentiments into a new file named OUTPUT_FILE 
-(
-i
-.
-e
-−
-(i.e− cleaned_imdb_dataset.csv
-)
-.
-).
+
+Save the cleaned reviews and their original sentiments into a new file named OUTPUT_FILE (i.e− cleaned_imdb_dataset.csv).
+
 Expected Output
 The first three lines of your cleaned_imdb_dataset.csv file should look like this
 
@@ -500,4 +493,39 @@ wonderful little production filming technique unassuming...
 thought wonderful way spend time hot summer weekend...
 
 ##############################
+
+import pandas as pd
+import re
+import nltk
+from nltk.corpus import stopwords
+
+# Download and load stopwords
+nltk.download('stopwords', quiet=True)
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text):
+    # 1. Remove HTML tags (Regex is faster for 50k+ rows)
+    text = re.sub(r'<.*?>', '', text)
+    
+    # 2. Lowercase and 3. Remove non-letters (Combined for efficiency)
+    text = re.sub(r'[^a-zA-Z\s]', '', text.lower())
+    
+    # 4. Remove stopwords
+    words = text.split()
+    return " ".join([w for w in words if w not in stop_words])
+
+# Load
+df = pd.read_csv("IMDB Dataset.csv")
+
+# Apply
+df['cleaned_review'] = df['review'].apply(clean_text)
+
+# Save only the required columns
+# Note: Using the column name 'cleaned_review' as requested in your Part 2 prompt
+output_df = df[['cleaned_review', 'sentiment']]
+output_df.to_csv("cleaned_imdb_dataset.csv", index=False)
+
+print("✅ Cleaning complete! The dataset is now 'Machine Learning' ready.")
+
+#################################
 
