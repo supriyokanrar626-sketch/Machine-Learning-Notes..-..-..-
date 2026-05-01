@@ -143,3 +143,35 @@ print("✅ Analysis complete. The visualization has been saved as 'kmeans_cluste
 
 #####################################
 
+K-Means on a Toy Dataset - Practice Problem
+We’re testing how well K-Means Clustering can group data points into clusters without using any labels.
+To do this, we generate a toy dataset of points using make_blobs with 4 centers and then apply K-Means to find clusters.
+
+K-Means works by:
+
+Choosing a number of clusters (k).
+Assigning points to the nearest cluster center.
+Updating cluster centers until they stabilize.
+
+Example Dataset (generated using blobs with 4 centers)
+
+X1	X2
+-7.2	-8.5
+-6.9	-9.1
+4.0	2.3
+5.5	1.9
+-2.4	7.0
+-3.2	6.5
+Task
+
+Generate a dataset with 150 samples and 4 clusters using make_blobs.
+Apply KMeans with n_clusters=4.
+Predict the cluster labels for each data point.
+Plot the clusters with different colors.
+Mark the cluster centroids with red "X".
+
+Expected Output
+
+image
+
+###########################
