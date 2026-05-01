@@ -243,3 +243,50 @@ Expected Output :
 image
 
 ####################################
+
+# Import libraries
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Step 1: Load dataset
+df = pd.read_csv("customer_data.csv")
+
+# Step 2: Select features (Age, Annual_Income)
+X = df[['Age', 'Annual_Income']]
+
+# Step 3: Apply K-Means (k=3)
+kmeans = KMeans(n_clusters=3, random_state=42)
+labels = kmeans.fit_predict(X)
+
+# Step 4: Add cluster labels to dataset (optional)
+df['Cluster'] = labels
+
+# Print result
+print(df)
+
+# Step 5: Plot clusters
+plt.scatter(X['Age'], X['Annual_Income'], c=labels, cmap='viridis')
+
+# Plot centroids
+plt.scatter(
+    kmeans.cluster_centers_[:, 0],
+    kmeans.cluster_centers_[:, 1],
+    c='red',
+    marker='X',
+    s=200,
+    label="Centroids"
+)
+
+plt.xlabel("Age")
+plt.ylabel("Annual Income")
+plt.title("Customer Segmentation using K-Means")
+plt.legend()
+
+# Save image
+plt.savefig("customer_clusters.png")
+plt.close()
+
+print("\n✅ Plot saved as customer_clusters.png")
+
+#########################
