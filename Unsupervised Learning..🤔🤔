@@ -1,16 +1,20 @@
-k-Means Clustering
+k-Means Clustering..
+
 We already learned in Module 1 that Clustering is about grouping similar things together, without labels.
 Now, let’s study one of the most popular clustering algorithms: K-Means.
+
 1. What is K-Means?
 
 K-Means groups data into K clusters (K = number of groups you want).
 Each cluster has a center point (called a centroid).
 Every data point belongs to the cluster whose centroid it is closest to.
+
 Example: Suppose you want to divide customers into 3 groups based on their income and age.
 
 K-Means will place 3 centers.
 Each customer will be assigned to the nearest center.
 The groups form automatically.
+
 2. How Does K-Means Work?
 
 Step by step intuition:
@@ -20,12 +24,14 @@ Place centers → K-Means starts with K random points as “centers.”
 Assign points → Each data point is assigned to the nearest center.
 Update centers → Move each center to the average position of its assigned points.
 Repeat → Keep assigning and updating until the centers don’t move much.
-Note (Cost Function): K-Means tries to minimize the sum of squared distances between points and their assigned cluster centers. This is the “score” the algorithm wants to optimize.
+Note (Cost Function): K-Means tries to minimize the sum of squared distances between points and their assigned cluster centers. 
+This is the “score” the algorithm wants to optimize.
 
 Limitations to be aware of:
 Sensitive to the choice of K (number of clusters).
 Sensitive to initial placement of cluster centers.
 Works best for spherical clusters; struggles with irregular shapes.
+
 3. Everyday Analogy
 
 Imagine you are opening 3 new shops in a city:
@@ -41,5 +47,7 @@ That’s exactly how K-Means works!
 Customer segmentation (grouping people by buying patterns).
 Image compression (grouping similar colors).
 Market research (finding product categories).
+
+################################
 
 
