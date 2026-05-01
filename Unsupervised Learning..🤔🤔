@@ -60,3 +60,54 @@ For each cluster, it recalculates the center (centroid)
 The new center becomes the mean (average) of all points assigned to that cluster
 
 ##############################3
+
+
+K-Means on a Toy Dataset - Worked Example
+Let’s see K-Means in action on a simple dataset.
+
+Step 1: Import Libraries
+
+We’ll use sklearn to generate data and matplotlib to visualize clusters.
+
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+Step 2: Create a Toy Dataset
+
+We’ll generate 100 points grouped around 3 centers (clusters). This mimics real-world data like customers with different spending habits.
+
+# Generate toy dataset with 3 clusters
+X, _ = make_blobs(n_samples=100, centers=3, random_state=42)
+Step 3: Apply K-Means
+
+Now we let K-Means find 3 clusters in the dataset.
+
+# Train KMeans with 3 clusters
+kmeans = KMeans(n_clusters=3, random_state=42)
+labels = kmeans.fit_predict(X)
+n_clusters=3 → we ask K-Means to find 3 groups.
+fit_predict(X) → K-Means learns clusters and assigns each point a cluster label.
+Step 4: Visualize the Clusters
+
+We can plot the points in different colors, and mark the centroids.
+
+# Plot clusters
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], 
+            c='red', marker='X', s=200, label="Centroids")
+plt.legend()
+plt.savefig("kmeans_clusters.png")  # saves image
+plt.close()
+The plot will show:
+
+Data points grouped into 3 colored clusters.
+Red X’s showing the cluster centers.
+Step 5: Key Takeaways
+
+K-Means automatically grouped points into clusters.
+Each cluster is represented by its centroid (red X).
+The algorithm can handle large datasets and is widely used in real-world applications.
+
+Output..
+
+#########################
