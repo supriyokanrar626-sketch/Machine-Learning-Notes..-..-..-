@@ -50,4 +50,13 @@ Market research (finding product categories).
 
 ################################
 
+K-Means MCQ
+You start K-Means with 3 random centers. After the first assignment, some centers are far from their assigned points. What happens next?
 
+ANSWER = The assign center will get pullled closer to the first assignment..
+K-Means enters the update step:
+
+For each cluster, it recalculates the center (centroid)
+The new center becomes the mean (average) of all points assigned to that cluster
+
+##############################3
