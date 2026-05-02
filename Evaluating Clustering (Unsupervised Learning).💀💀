@@ -1,1 +1,32 @@
+Evaluating Clustering..
+
+So far, we learned K-Means can group data into clusters. But here’s a question:
+How do we know if the clustering is good?
+Let’s look at two simple ways: Inertia and Silhouette Score.
+1. Inertia (Cluster Tightness)
+
+Inertia measures how close each data point is to its cluster center (centroid).
+Think of it as the total error in clustering.
+Lower Inertia = clusters are tighter and points are closer to their centers.
+Example:
+
+If customers in a cluster are very similar (close together), inertia is low.
+If they are spread out (far from center), inertia is high.
+In scikit-learn, KMeans automatically gives you model.inertia_.
+2. Silhouette Score (Cluster Separation)
+
+The Silhouette Score checks if clusters are well separated.
+It compares:
+How close a point is to its own cluster.
+How far it is from other clusters.
+Score ranges from -1 to 1:
++1 → Perfectly clustered (points are tight & well separated).
+0 → Clusters overlap (not clear).
+-1 → Points may be in the wrong cluster.
+Higher Silhouette Score = better clustering.
+3. Key Takeaways
+
+Inertia = How tight the clusters are (lower is better).
+Silhouette Score = How well clusters are separated (closer to 1 is better).
+
 
