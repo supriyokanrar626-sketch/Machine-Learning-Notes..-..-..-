@@ -34,4 +34,25 @@ Higher Silhouette Score = better clustering.
 Inertia = How tight the clusters are (lower is better).
 Silhouette Score = How well clusters are separated (closer to 1 is better).
 
+##################################
+
+
+Evaluating Clustering MCQ
+Scenario: You try k=2 and k=5 clusters.
+
+Results:
+
+k=2 → Inertia = 300, Silhouette = 0.60
+k=5 → Inertia = 100, Silhouette = 0.20
+Which k is a better choice?
+
+ANSWER = k = 2 is the better choice because silhouette score is more reliable for cluster quality.
+Even though k=5 has lower inertia, its very low silhouette score (0.20) means:
+
+Clusters are overlapping or poorly defined
+
+k=2 has:
+
+Good separation (0.60)
+More meaningful clusters
 
