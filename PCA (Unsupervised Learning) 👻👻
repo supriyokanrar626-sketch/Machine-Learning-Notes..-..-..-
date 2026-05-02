@@ -180,7 +180,8 @@ plt.show()
 
 #################################
 
-PCA - Practice Problem 2
+PCA - Practice Problem 2..
+
 We’re exploring how Principal Component Analysis (PCA) can reduce the dimensionality of a dataset and help us visualize patterns in 2D space.
 
 In this exercise, you will apply PCA to the Iris dataset, which has 4 features (sepal length, sepal width, petal length, petal width). The goal is to reduce it to 2 dimensions and visualize the samples with a scatter plot.
@@ -210,3 +211,33 @@ Expected Output
 A 2D scatter plot showing the Iris dataset samples grouped by species along the first two principal components.
 
 ############################# FULL CODE ###############
+
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Apply PCA (reduce to 2 dimensions)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Plot
+plt.figure(figsize=(8,6))
+scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis')
+
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.title("PCA - Iris Dataset")
+
+# Optional but useful
+plt.colorbar(scatter, label="Species")
+
+# Save and display
+plt.savefig("pca_practice.png")
+plt.show()
+
+##############################
