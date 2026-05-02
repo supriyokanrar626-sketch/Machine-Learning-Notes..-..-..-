@@ -118,17 +118,20 @@ plt.close()
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44???????????//////////////
 
-PCA - Practice Problem
+PCA - Practice Problem..
+
 We’re testing how well PCA (Principal Component Analysis) can reduce the dimensionality of a dataset and reveal patterns in 2D space.
 
-In this exercise, you will apply PCA to the Iris dataset, which has 4 features (sepal length, sepal width, petal length, petal width), and reduce it to 2 dimensions. Then, you will visualize the results in a scatter plot.
+In this exercise, you will apply PCA to the Iris dataset, which has 4 features (sepal length, sepal width, petal length, petal width), 
+and reduce it to 2 dimensions. Then, you will visualize the results in a scatter plot.
 
 What PCA Does
 
 PCA reduces the number of features while retaining most of the important information.
 It finds directions of maximum variance (principal components) and projects the data along them.
 This is useful for visualization, noise reduction, and faster computation.
-Example Dataset
+
+Example Dataset :
 
 The Iris dataset contains 150 samples with 4 features:
 
@@ -138,6 +141,7 @@ Sepal Length	Sepal Width	Petal Length	Petal Width	Species
 7.0	3.2	4.7	1.4	1
 6.4	3.2	4.5	1.5	1
 5.9	3.0	5.1	1.8	2
+
 Species: 0 = Setosa, 1 = Versicolor, 2 = Virginica
 
 Task
@@ -151,3 +155,25 @@ Save the plot as pca_practice.png and show it using plt.show().
 Expected Output
 
 image
+#########################  FULL CODE ###########
+
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Apply PCA with 2 components
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Plot the PCA results
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis')
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.title("PCA on Iris Dataset")
+plt.savefig("pca_iris.png")  # saves image
+plt.close()
