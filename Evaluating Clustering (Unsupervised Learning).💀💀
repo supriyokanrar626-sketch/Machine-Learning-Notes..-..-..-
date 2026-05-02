@@ -167,7 +167,6 @@ Silhouette Score (closer to 1 is better): 0.8480303059596955
 
 ######################################3
 
-
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -196,7 +195,8 @@ plt.show()
 #################################33333
 
 
-Evaluating Clusters - Practice Problem 2
+Evaluating Clusters - Practice Problem 2..
+
 We’re testing how well our clustering model works.
 To do this, we evaluate the clusters formed by K-Means using two key metrics:
 
@@ -215,9 +215,39 @@ Train a KMeans model with n_clusters=4.
 Print the Inertia value of the trained model.
 Use silhouette_score(X, labels) to calculate the Silhouette Score.
 Plot the clusters with their centroids and save the image as clusters_eval.png.
+
 Expected Output
 
 k = 3, Inertia = 3426.26, Silhouette Score = 0.76
 k = 4, Inertia = 948.89, Silhouette Score = 0.79
 k = 5, Inertia = 861.76, Silhouette Score = 0.69
 k = 6, Inertia = 773.66, Silhouette Score = 0.56
+
+###################  code hhere ###############
+
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+
+# Generate toy dataset with 4 clusters
+X, _ = make_blobs(n_samples=500, centers=4, random_state=42)
+
+# Train KMeans with 4 clusters
+kmeans = KMeans(n_clusters=4, random_state=42)
+labels = kmeans.fit_predict(X)
+
+print("Inertia (lower is better):", kmeans.inertia_)
+
+score = silhouette_score(X, labels)
+print("Silhouette Score (closer to 1 is better):", score)
+
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], 
+            c='red', marker='X', s=200, label="Centroids")
+plt.title("K-Means Clustering with 4 Clusters")
+plt.legend()
+plt.savefig("clusters_eval.png")
+plt.show()
+
+#################################  end #########
