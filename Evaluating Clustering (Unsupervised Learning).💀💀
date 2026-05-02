@@ -36,7 +36,6 @@ Silhouette Score = How well clusters are separated (closer to 1 is better).
 
 ##################################
 
-
 Evaluating Clustering MCQ
 Scenario: You try k=2 and k=5 clusters.
 
@@ -56,3 +55,54 @@ k=2 has:
 Good separation (0.60)
 More meaningful clusters
 
+########################3333333333333
+
+Evaluating Clusters - Worked Example
+Let’s see how we can measure clustering quality using Inertia and Silhouette Score.
+
+Step 1: Import Libraries
+
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+Step 2: Create a Toy Dataset
+
+We’ll generate 300 points grouped into 3 clusters.
+
+# Generate toy dataset with 3 clusters
+X, _ = make_blobs(n_samples=300, centers=3, random_state=42)
+Step 3: Apply K-Means
+
+Let’s cluster the data into 3 groups.
+
+# Train KMeans with 3 clusters
+kmeans = KMeans(n_clusters=3, random_state=42)
+labels = kmeans.fit_predict(X)
+Step 4: Calculate Inertia
+
+print("Inertia (lower is better):", kmeans.inertia_)
+This tells us how close points are to their cluster centers. Lower inertia means tighter clusters.
+Step 5: Calculate Silhouette Score
+
+score = silhouette_score(X, labels)
+print("Silhouette Score (closer to 1 is better):", score)
+This checks separation between clusters. Higher Silhouette Score means clusters are well separated.
+Step 6: Visualize Clusters
+
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], 
+            c='red', marker='X', s=200, label="Centroids")
+plt.title("K-Means Clustering with 3 Clusters")
+plt.legend()
+plt.savefig("clusters_eval.png")
+plt.close()
+The plot shows:
+
+Points grouped into 3 colored clusters.
+Red X = cluster centers.
+Key Takeaways
+
+Inertia tells us how tight the clusters are (lower = better).
+Silhouette Score tells us how well clusters are separated (closer to 1 = better).
+Together, they help us decide if clustering worked well.
