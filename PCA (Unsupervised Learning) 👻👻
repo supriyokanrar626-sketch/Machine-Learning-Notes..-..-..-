@@ -176,4 +176,6 @@ plt.xlabel("Principal Component 1")
 plt.ylabel("Principal Component 2")
 plt.title("PCA on Iris Dataset")
 plt.savefig("pca_iris.png")  # saves image
-plt.close()
+plt.show() 
+
+#################################
