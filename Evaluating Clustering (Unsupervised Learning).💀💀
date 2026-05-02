@@ -194,3 +194,30 @@ plt.savefig("clusters_eval.png")
 plt.show()
 
 #################################33333
+
+
+Evaluating Clusters - Practice Problem 2
+We’re testing how well our clustering model works.
+To do this, we evaluate the clusters formed by K-Means using two key metrics:
+
+Inertia (Within-Cluster Sum of Squares) → Measures how tightly the data points are grouped within clusters.
+Lower inertia → Better clustering.
+Silhouette Score → Measures how well each point fits within its cluster compared to other clusters.
+Closer to 1 → Better defined clusters.
+Around 0 → Overlapping clusters.
+Negative → Wrong clustering.
+Example Dataset We generate a toy dataset with 500 samples and 4 clusters using make_blobs.
+
+Task
+
+Generate a dataset using make_blobs with 500 samples and 4 centers.
+Train a KMeans model with n_clusters=4.
+Print the Inertia value of the trained model.
+Use silhouette_score(X, labels) to calculate the Silhouette Score.
+Plot the clusters with their centroids and save the image as clusters_eval.png.
+Expected Output
+
+k = 3, Inertia = 3426.26, Silhouette Score = 0.76
+k = 4, Inertia = 948.89, Silhouette Score = 0.79
+k = 5, Inertia = 861.76, Silhouette Score = 0.69
+k = 6, Inertia = 773.66, Silhouette Score = 0.56
