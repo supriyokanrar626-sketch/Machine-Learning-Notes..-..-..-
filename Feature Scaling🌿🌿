@@ -1,1 +1,28 @@
+Feature scaling..
+Imagine we are making a machine learning model to predict employee performance. Our dataset has:
+
+Feature	   Example Values
+Age	       18, 25, 40, 50
+Salary	  20,000, 50,000, 200,000
+
+The problem:
+
+Salary numbers are very large compared to Age.
+The model may think Salary is more important, just because the values are bigger.
+But in reality, both Age and Salary are important.
+Two Common Ways to Scale Data
+
+1. Min-Max Scaling
+
+Changes values to be between 0 and 1.
+Example:
+If Age = 40, minimum age = 20, maximum age = 60
+New value = (40 - 20) / (60 - 20) = 0.5 Used when we want all features in the same small range (0–1).
+2. Standardization (Z-score)
+
+Changes values so that:
+Average (mean) becomes 0
+Spread (standard deviation) becomes 1
+Useful when data has different ranges or outliers.
+
 
