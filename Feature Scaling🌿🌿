@@ -102,3 +102,31 @@ print("\nStandardized Dataset:\n")
 print(df_standard)
 
 ##################################
+
+Feature scaling - Practice Problem
+You are given a dataset called students.csv with the following columns:
+
+Name	Age	Marks
+John	18	72
+Sarah	20	85
+Alex	19	91
+Maria	21	65
+David	22	80
+
+Task
+
+Load the dataset using pandas.
+Select only the numeric features (Age and Marks).
+Apply Min-Max Scaling to bring both features into the range [0,1].
+Print the scaled values as a DataFrame.
+Expected Output
+
+Scaled Data:
+    Age     Marks
+0  0.00  0.269231
+1  0.50  0.769231
+2  0.25  1.000000
+3  0.75  0.000000
+4  1.00  0.576923
+
+########################################
