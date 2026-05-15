@@ -130,3 +130,26 @@ Scaled Data:
 4  1.00  0.576923
 
 ########################################
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+# Load dataset
+df = pd.read_csv("students.csv")
+
+# Select numeric columns
+features = df[["Age", "Marks"]]
+
+# Apply Min-Max Scaling
+minmax_scaler = MinMaxScaler()
+
+scaled_data = pd.DataFrame(
+    minmax_scaler.fit_transform(features),
+    columns=features.columns
+)
+
+# Print scaled values
+print("Scaled Data:\n")
+print(scaled_data)
+
+####################################
