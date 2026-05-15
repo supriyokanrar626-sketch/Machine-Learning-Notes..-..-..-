@@ -153,3 +153,38 @@ print("Scaled Data:\n")
 print(scaled_data)
 
 ####################################
+
+Feature scaling - Practice Problem 2
+You are given a dataset called employees.csv with the following columns:
+
+EmployeeID	Name	Salary	Experience
+1	Alice	45000	2
+2	Bob	52000	4
+3	Charlie	61000	5
+4	David	72000	7
+5	Eva	85000	10
+
+Task
+
+Load the dataset using pandas.
+Select only the numeric features (Salary and Experience).
+Apply Standard Scaling so that the features have mean 0 and standard deviation 1.
+Print the standardized values as a DataFrame.
+
+Expected Output  : 
+
+Standardized Data:
+
+     Salary  Experience
+0 -1.445919   -1.359538
+1 -1.210537   -1.082082
+2 -0.907903   -0.943353
+3 -0.538017   -0.665896
+4 -0.100878   -0.249711
+5  0.067252    0.027746
+6  0.403512    0.443931
+7  0.739773    0.860116
+8  1.244163    1.137573
+9  1.748554    1.831215
+
+############################################  CODE HERE ##################
