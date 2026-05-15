@@ -26,4 +26,79 @@ Average (mean) becomes 0
 Spread (standard deviation) becomes 1
 Useful when data has different ranges or outliers.
 
+33333###################
 
+Feature scaling - Worked Example.
+In this example, we will load a small dataset, apply Min-Max Scaling and Standardization, and compare the results.
+We have a dataset of employees with their Age and Salary. Since Salary values are much larger than Age, we will scale the features so that 
+both can be compared fairly.
+
+Step 1: Make a tiny dataset
+
+data = {"Age": [...], "Salary": [...]}
+df = pd.DataFrame(data)
+We build a small table with two columns: Age and Salary.
+This shows a common real-world issue: numbers live on very different ranges (Age: tens, Salary: thousands).
+
+Step 2: Min-Max Scaling (0 to 1)
+
+minmax_scaler = MinMaxScaler()
+df_minmax = pd.DataFrame(minmax_scaler.fit_transform(df), columns=df.columns)
+What it does: squeezes each column so its minimum becomes 0 and maximum becomes 1.
+fit_transform does two things:
+fit: looks at the column’s min and max.
+transform: applies (x - min) / (max - min) to every value.
+We wrap the result back into a DataFrame and keep the original column names so it’s easy to read.
+
+Step 3: Standardization (mean 0, std 1)
+
+standard_scaler = StandardScaler()
+df_standard = pd.DataFrame(standard_scaler.fit_transform(df), columns=df.columns)
+What it does: centers each column to mean = 0 and scales to standard deviation = 1.
+Useful when features have different spreads or when you expect outliers.
+Again, we use fit_transform and rebuild a labeled DataFrame for readability.
+What you should notice
+
+In Min-Max, values are between 0 and 1.
+In Standardization, values are centered around 0 (you’ll see negative and positive numbers).
+After scaling, Age won’t be overshadowed by Salary just because Salary has larger numbers.
+
+#############################  CODE here #################3
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+# Dataset
+data = {
+    "Age": [22, 25, 30, 35, 40],
+    "Salary": [25000, 40000, 60000, 80000, 100000]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Dataset:\n")
+print(df)
+
+# Min-Max Scaling
+minmax_scaler = MinMaxScaler()
+
+df_minmax = pd.DataFrame(
+    minmax_scaler.fit_transform(df),
+    columns=df.columns
+)
+
+print("\nMin-Max Scaled Dataset:\n")
+print(df_minmax)
+
+# Standardization
+standard_scaler = StandardScaler()
+
+df_standard = pd.DataFrame(
+    standard_scaler.fit_transform(df),
+    columns=df.columns
+)
+
+print("\nStandardized Dataset:\n")
+print(df_standard)
+
+##################################
