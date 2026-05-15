@@ -18,6 +18,7 @@ Changes values to be between 0 and 1.
 Example:
 If Age = 40, minimum age = 20, maximum age = 60
 New value = (40 - 20) / (60 - 20) = 0.5 Used when we want all features in the same small range (0–1).
+
 2. Standardization (Z-score)
 
 Changes values so that:
