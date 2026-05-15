@@ -188,3 +188,26 @@ Standardized Data:
 9  1.748554    1.831215
 
 ############################################  CODE HERE ##################
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# Load dataset
+df = pd.read_csv("employees.csv")
+
+# Select numeric features
+features = df[["Salary", "Experience"]]
+
+# Apply Standard Scaling
+standard_scaler = StandardScaler()
+
+standardized_data = pd.DataFrame(
+    standard_scaler.fit_transform(features),
+    columns=features.columns
+)
+
+# Print standardized values
+print("Standardized Data:\n")
+print(standardized_data)
+
+######################
